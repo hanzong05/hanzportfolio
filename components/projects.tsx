@@ -10,8 +10,8 @@ interface Project {
   technologies: string[];
   showGithub: boolean;
   showLive: boolean;
-  githubUrl: string | null;
-  liveUrl: string | null;
+  githubUrl?: string;
+  liveUrl?: string;
 }
 
 export default function Projects() {
@@ -39,8 +39,7 @@ export default function Projects() {
       technologies: ["Laravel", "React", "MySQL", "PHP", "JavaScript"],
       showGithub: true,
       showLive: false,
-      githubUrl: "https://github.com/hanzong05/SMMS",
-      liveUrl: null
+      githubUrl: "https://github.com/hanzong05/SMMS"
     },
     {
       id: 2,
@@ -53,8 +52,7 @@ export default function Projects() {
       technologies: ["Laravel", "React", "MySQL", "PHP", "JavaScript"],
       showGithub: true,
       showLive: false,
-      githubUrl: "#https://github.com/hanzong05/hris",
-      liveUrl: null
+      githubUrl: "#https://github.com/hanzong05/hris"
     },
     {
       id: 3,
@@ -67,7 +65,6 @@ export default function Projects() {
       technologies: ["CakePHP", "Angular", "MySQL"],
       showGithub: false,
       showLive: true,
-      githubUrl: null,
       liveUrl: "https://ehrismilagros.ednc.solutions/login"
     },
     {
@@ -81,7 +78,6 @@ export default function Projects() {
       technologies: ["CakePHP", "Angular", "MySQL"],
       showGithub: false,
       showLive: true,
-      githubUrl: null,
       liveUrl: "https://khoshipping.ednc.solutions/login#"
     },
     {
@@ -109,8 +105,7 @@ export default function Projects() {
       technologies: ["MySQL", "JavaScript", "HTML", "CSS", "PHP"],
       showGithub: true,
       showLive: false,
-      githubUrl: "https://github.com/hanzong05/projectCkiosk",
-      liveUrl: null
+      githubUrl: "https://github.com/hanzong05/projectCkiosk"
     },
     {
       id: 7,
@@ -123,8 +118,7 @@ export default function Projects() {
       technologies: ["MySQL", "JavaScript", "HTML", "CSS", "PHP"],
       showGithub: true,
       showLive: false,
-      githubUrl: "https://github.com/wirudesu/Alumni-repo",
-      liveUrl: null
+      githubUrl: "https://github.com/wirudesu/Alumni-repo"
     },
     {
       id: 8,
@@ -137,7 +131,6 @@ export default function Projects() {
       technologies: ["WordPress"],
       showGithub: false,
       showLive: true,
-      githubUrl: null,
       liveUrl: "https://aroroy.mycreativepanda.com/#"
     }
   ];
