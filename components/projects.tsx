@@ -2,11 +2,23 @@
 import React, { useState } from 'react';
 import DetailsModal from './detailsmodal';
 
+interface Project {
+  id: number;
+  title: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+  showGithub: boolean;
+  showLive: boolean;
+  githubUrl: string | null;
+  liveUrl: string | null;
+}
+
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (project) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
   };
