@@ -1,6 +1,23 @@
 import React from 'react';
 
-export default function DetailsModal({ project, isOpen, onClose }) {
+interface Project {
+  title: string;
+  period: string;
+  description: string[];
+  technologies: string[];
+  showGithub?: boolean;
+  githubUrl?: string;
+  showLive?: boolean;
+  liveUrl?: string;
+}
+
+interface DetailsModalProps {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function DetailsModal({ project, isOpen, onClose }: DetailsModalProps) {
   if (!isOpen || !project) return null;
 
   return (
