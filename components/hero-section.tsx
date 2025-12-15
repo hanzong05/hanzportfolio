@@ -7,11 +7,12 @@ export default function HeroSection() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  const titles = ['Full-Stack Developer', 'Web Developer', 'Mobile Developer'];
+  
+const titles =['Full-Stack Developer','Mobile Developer','Web Developer'];
   const typingSpeed = 100; // milliseconds per character
   const deletingSpeed = 50; // milliseconds per character when deleting
   const pauseAfterTyping = 2000; // pause after typing complete text
-  const pauseAfterDeleting = 500; // pause after deleting complete text
+  const pauseAfterDeleting = 50; // pause after deleting complete text
 
   useEffect(() => {
     // Simulate content loading
@@ -102,13 +103,13 @@ export default function HeroSection() {
 
           <div className="space-y-4 text-gray-400 leading-relaxed">
             <p className="text-base md:text-lg">
-              I build scalable, high-performance applications using TypeScript, JavaScript, React, Node.js, Next.js, and Laravel.
+              I specialize in building custom HRIS systems, e-commerce platforms, and full-stack web applications using React, Angular, Node.js, Laravel, CakePHP, and modern databases like MySQL and PostgreSQL.
             </p>
             <p className="text-base md:text-lg">
-              From crafting intuitive frontends to designing robust APIs, HRIS systems, e-commerce platforms, and custom web applications, I deliver quality code that drives real impact.
+              From developing government websites and booking systems to creating payroll solutions and mobile apps, I've delivered impactful projects for organizations like My Creative Panda, Eljin Corporation, and local government units in the Philippines.
             </p>
             <p className="text-base md:text-lg">
-              Passionate about solving complex challenges in fast-paced, collaborative environments. Ready to build something exceptional together.
+              BSc in Information Systems graduate with hands-on experience in system architecture, database management, and business analytics. Let's build something exceptional together.
             </p>
           </div>
         </div>
@@ -117,16 +118,13 @@ export default function HeroSection() {
         <div className="relative flex justify-center md:justify-end">
           <div className="relative rounded-lg max-w-md w-full">
             <img
-              src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&q=80"
-              alt="Developer workspace with code on multiple screens"
-              className="w-full h-auto object-cover rounded-lg hover:scale-105 transition-transform duration-700"
-              style={{
-                boxShadow: '0 25px 50px -12px rgba(34, 211, 238, 0.25), 0 25px 50px -12px rgba(59, 130, 246, 0.25), 0 25px 50px -12px rgba(168, 85, 247, 0.25), 0 25px 50px -12px rgba(236, 72, 153, 0.25)'
-              }}
+              src="/dev.png"
+              alt="Hanz Pillerva - Full-Stack Developer"
+              className="w-full h-auto object-cover rounded-lg hover:scale-105 transition-transform duration-700 animate-glow"
             />
           </div>
         </div>
       </div>
     </div>
   );
-}   
+}

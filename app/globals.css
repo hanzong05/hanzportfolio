@@ -106,3 +106,46 @@ body {
 .animate-shimmer-border {
   animation: shimmer-border 3s infinite linear;
 }
+
+/* Animated rotating glow effect for hero image */
+@keyframes glow {
+  0% {
+    box-shadow:
+      0 -25px 50px -12px rgba(34, 211, 238, 0.6),
+      25px 0 50px -12px rgba(59, 130, 246, 0.3),
+      0 25px 50px -12px rgba(168, 85, 247, 0.3),
+      -25px 0 50px -12px rgba(236, 72, 153, 0.3);
+  }
+  25% {
+    box-shadow:
+      25px 0 50px -12px rgba(34, 211, 238, 0.6),
+      0 25px 50px -12px rgba(59, 130, 246, 0.3),
+      -25px 0 50px -12px rgba(168, 85, 247, 0.3),
+      0 -25px 50px -12px rgba(236, 72, 153, 0.3);
+  }
+  50% {
+    box-shadow:
+      0 25px 50px -12px rgba(34, 211, 238, 0.6),
+      -25px 0 50px -12px rgba(59, 130, 246, 0.3),
+      0 -25px 50px -12px rgba(168, 85, 247, 0.3),
+      25px 0 50px -12px rgba(236, 72, 153, 0.3);
+  }
+  75% {
+    box-shadow:
+      -25px 0 50px -12px rgba(34, 211, 238, 0.6),
+      0 -25px 50px -12px rgba(59, 130, 246, 0.3),
+      25px 0 50px -12px rgba(168, 85, 247, 0.3),
+      0 25px 50px -12px rgba(236, 72, 153, 0.3);
+  }
+  100% {
+    box-shadow:
+      0 -25px 50px -12px rgba(34, 211, 238, 0.6),
+      25px 0 50px -12px rgba(59, 130, 246, 0.3),
+      0 25px 50px -12px rgba(168, 85, 247, 0.3),
+      -25px 0 50px -12px rgba(236, 72, 153, 0.3);
+  }
+}
+
+.animate-glow {
+  animation: glow 4s linear infinite;
+}
