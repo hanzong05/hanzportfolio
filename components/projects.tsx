@@ -132,6 +132,57 @@ export default function Projects() {
       showGithub: false,
       showLive: true,
       liveUrl: "https://aroroy.mycreativepanda.com/#"
+    },
+    {
+      id: 9,
+      title: "Sugar Production Ticketing POS",
+      period: "2026",
+      description: [
+        "Built a point-of-sale and ticketing application for managing sugar production operations and transactions.",
+        "Streamlined production tracking, ticket generation, and sales reporting for sugar mill workflows."
+      ],
+      technologies: ["Flutter", "Dart"],
+      showGithub: false,
+      showLive: false
+    },
+    {
+      id: 10,
+      title: "Affecta – AI-Powered Call Monitoring",
+      period: "2026",
+      description: [
+        "Built an AI-driven call center monitoring platform with real-time risk scoring and emotional trend analysis.",
+        "Provides agent performance insights and supervisor alerts to prevent escalations before they occur."
+      ],
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "AI/ML"],
+      showGithub: false,
+      showLive: true,
+      liveUrl: "https://affecta-six.vercel.app/"
+    },
+    {
+      id: 10,
+      title: "OCR Document Scanner",
+      period: "2026",
+      description: [
+        "Developed an OCR-powered web application for extracting and digitizing text from documents and images.",
+        "Streamlined document processing with accurate text recognition and export capabilities."
+      ],
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "OCR"],
+      showGithub: false,
+      showLive: true,
+      liveUrl: "https://ocr-fe-lyart.vercel.app/"
+    },
+    {
+      id: 11,
+      title: "LiqueFact – Soil Liquefaction Analysis",
+      period: "2026",
+      description: [
+        "Built a geotechnical web app for soil liquefaction risk assessment using borehole data across Tarlac, Philippines.",
+        "Interactive map with real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations."
+      ],
+      technologies: ["Next.js", "TypeScript", "Leaflet", "Tailwind CSS"],
+      showGithub: false,
+      showLive: true,
+      liveUrl: "https://liquefact-ry9t.vercel.app/analysis"
     }
   ];
 

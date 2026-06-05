@@ -4,6 +4,7 @@ import {
   SiJavascript,
   SiTypescript,
   SiPhp,
+  SiPython,
   SiNodedotjs,
   SiLaravel,
   SiMysql,
@@ -11,6 +12,7 @@ import {
   SiReact,
   SiNextdotjs,
   SiAngular,
+  SiFlutter,
   SiWordpress,
   SiGit,
   SiCakephp
@@ -45,7 +47,8 @@ export default function TechSkills() {
       skills: [
         { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E", proficiency: 90 },
         { name: "TypeScript", icon: SiTypescript, color: "#3178C6", proficiency: 90 },
-        { name: "PHP", icon: SiPhp, color: "#777BB4", proficiency: 90 }
+        { name: "PHP", icon: SiPhp, color: "#777BB4", proficiency: 90 },
+        { name: "Python", icon: SiPython, color: "#3776AB", proficiency: 80 }
       ]
     },
     {
@@ -67,6 +70,7 @@ export default function TechSkills() {
         { name: "Next.js", icon: SiNextdotjs, color: "#000000", proficiency: 85 },
         { name: "Angular", icon: SiAngular, color: "#DD0031", proficiency: 85 },
         { name: "React Native", icon: SiReact, color: "#61DAFB", proficiency: 85 },
+        { name: "Flutter", icon: SiFlutter, color: "#02569B", proficiency: 80 },
         { name: "WordPress", icon: SiWordpress, color: "#21759B", proficiency: 80 }
       ]
     },
