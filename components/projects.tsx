@@ -52,7 +52,7 @@ export default function Projects() {
       technologies: ["Laravel", "React", "MySQL", "PHP", "JavaScript"],
       showGithub: true,
       showLive: false,
-      githubUrl: "#https://github.com/hanzong05/hris"
+      githubUrl: "https://github.com/hanzong05/hris"
     },
     {
       id: 3,
@@ -142,8 +142,9 @@ export default function Projects() {
         "Streamlined production tracking, ticket generation, and sales reporting for sugar mill workflows."
       ],
       technologies: ["Flutter", "Dart"],
-      showGithub: false,
-      showLive: false
+      showGithub: true,
+      showLive: false,
+      githubUrl: "https://github.com/hanzong05/sugar-production"
     },
     {
       id: 10,
@@ -151,15 +152,17 @@ export default function Projects() {
       period: "2026",
       description: [
         "Built an AI-driven call center monitoring platform with real-time risk scoring and emotional trend analysis.",
-        "Provides agent performance insights and supervisor alerts to prevent escalations before they occur."
+        "Provides agent performance insights and supervisor alerts to prevent escalations before they occur.",
+        "Python backend uses Whisper speech recognition and MFCC-based emotion classification to analyze calls."
       ],
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "AI/ML"],
-      showGithub: false,
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "Python", "Whisper", "scikit-learn"],
+      showGithub: true,
       showLive: true,
+      githubUrl: "https://github.com/hanzong05/whspr",
       liveUrl: "https://affecta-six.vercel.app/"
     },
     {
-      id: 10,
+      id: 11,
       title: "OCR Document Scanner",
       period: "2026",
       description: [
@@ -167,22 +170,51 @@ export default function Projects() {
         "Streamlined document processing with accurate text recognition and export capabilities."
       ],
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "OCR"],
-      showGithub: false,
+      showGithub: true,
       showLive: true,
+      githubUrl: "https://github.com/hanzong05/ocr-fe",
       liveUrl: "https://ocr-fe-lyart.vercel.app/"
     },
     {
-      id: 11,
+      id: 12,
       title: "LiqueFact – Soil Liquefaction Analysis",
       period: "2026",
       description: [
         "Built a geotechnical web app for soil liquefaction risk assessment using borehole data across Tarlac, Philippines.",
         "Interactive map with real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations."
       ],
-      technologies: ["Next.js", "TypeScript", "Leaflet", "Tailwind CSS"],
-      showGithub: false,
+      technologies: ["React", "TypeScript", "Vite", "Leaflet"],
+      showGithub: true,
       showLive: true,
+      githubUrl: "https://github.com/hanzong05/liquefact",
       liveUrl: "https://liquefact-ry9t.vercel.app/analysis"
+    },
+    {
+      id: 13,
+      title: "BlueSpot Hub – Campground & RV Resort PWA Platform",
+      period: "2026",
+      description: [
+        "Built a multi-tenant guest app platform powering 19+ campground and RV resort hubs, each with amenities, things-to-do guides, booking links, maps, and live weather/radar.",
+        "Installable PWA with push notifications, geofenced alerts, guest chat, an admin panel, and hub onboarding, served through Cloudflare Workers with locked-down Firebase security rules."
+      ],
+      technologies: ["JavaScript", "HTML", "CSS", "Firebase", "Cloudflare Workers", "PWA"],
+      showGithub: true,
+      showLive: true,
+      githubUrl: "https://github.com/hanzong05/GHL",
+      liveUrl: "https://hub.bluespotguide.com"
+    },
+    {
+      id: 14,
+      title: "KITAPOS – Mobile Point of Sale",
+      period: "2025",
+      description: [
+        "Developed a cross-platform mobile POS app with cashier, manager, and admin dashboards and role-based staff access.",
+        "Integrated Supabase authentication and data sync through a dedicated middleware API."
+      ],
+      technologies: ["React Native", "Expo", "Supabase", "JavaScript"],
+      showGithub: true,
+      showLive: false,
+      githubUrl: "https://github.com/hanzong05/KITAPOS"
     }
   ];
 
