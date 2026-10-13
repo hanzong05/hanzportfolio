@@ -46,8 +46,7 @@ const projects: Project[] = [
     period: '2024',
     category: 'mobile',
     description: [
-      'Developed a multi-platform e-commerce application as part of a capstone project.',
-      'Mobile-first design with seamless shopping experience.',
+      'Multi-platform e-commerce application developed as a capstone project.',
     ],
     technologies: ['React Native', 'PostgreSQL', 'TypeScript'],
     showGithub: true,
@@ -62,7 +61,6 @@ const projects: Project[] = [
     period: '2026',
     category: 'mobile',
     description: [
-      'Built a point-of-sale and ticketing application for managing sugar production operations and transactions.',
       'Streamlined production tracking, ticket generation, and sales reporting for sugar mill workflows.',
     ],
     technologies: ['Flutter', 'Dart'],
@@ -77,7 +75,6 @@ const projects: Project[] = [
     period: '2026',
     category: 'ai',
     description: [
-      'Built an AI-driven call center monitoring platform with real-time risk scoring and emotional trend analysis.',
       'Provides agent performance insights and supervisor alerts to prevent escalations before they occur.',
       'Python backend uses Whisper speech recognition and MFCC-based emotion classification to analyze calls.',
     ],
@@ -94,7 +91,6 @@ const projects: Project[] = [
     period: '2026',
     category: 'ai',
     description: [
-      'Developed an OCR-powered web application for extracting and digitizing text from documents and images.',
       'Streamlined document processing with accurate text recognition and export capabilities.',
     ],
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OCR'],
@@ -110,7 +106,6 @@ const projects: Project[] = [
     period: '2026',
     category: 'web',
     description: [
-      'Built a geotechnical web app for soil liquefaction risk assessment using borehole data across Tarlac, Philippines.',
       'Interactive map with real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations.',
     ],
     technologies: ['React', 'TypeScript', 'Vite', 'Leaflet'],
@@ -142,8 +137,7 @@ const projects: Project[] = [
     period: '',
     category: 'web',
     description: [
-      'Travel site for finding campgrounds, RV parks, RV resorts, and marinas across the U.S., with BlueSpot Premier listings.',
-      'Local area guides covering dining, attractions, and RV services, plus trip planning and travel inspiration.',
+      'Mobile-first campground and RV travel guide with a filterable directory of Premier Properties, interactive maps, and personalized recently viewed listings.',
     ],
     technologies: ['WordPress', 'Beaver Builder'],
     showGithub: false,
@@ -157,13 +151,24 @@ const projects: Project[] = [
     period: '',
     category: 'web',
     description: [
-      'Website for an independently owned RV resort in Forsyth, Georgia, featuring full-hookup sites, cabin stays, and monthly stay applications.',
-      'Online booking, guest reviews, nearby attractions guide, and a resort map and FAQ.',
+      'Full resort website with dynamic amenities, gallery, and events, built with WordPress, ACF, and custom post types.',
     ],
-    technologies: ['WordPress'],
+    technologies: ['WordPress', 'ACF', 'Custom Post Types'],
     showGithub: false,
     showLive: true,
     liveUrl: 'https://forsythstationrv.com/',
+  },
+  {
+    id: 18,
+    title: 'BlueSpot iConnectHub',
+    period: '',
+    category: 'web',
+    description: [
+      'Onboarding and welcome landing page built to display correctly across major email clients.',
+    ],
+    technologies: ['HTML', 'CSS', 'Email Templates'],
+    showGithub: false,
+    showLive: false,
   },
   {
     id: 17,
