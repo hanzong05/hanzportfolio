@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
+import { X } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -18,107 +20,81 @@ interface DetailsModalProps {
 }
 
 export default function DetailsModal({ project, isOpen, onClose }: DetailsModalProps) {
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    window.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen || !project) return null;
 
   return (
     <div
-      className="fixed inset-0 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 z-50 animate-fadeIn"
+      className="fixed inset-0 z-[60] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={project.title}
     >
       <div
-        className="relative bg-slate-900/70 backdrop-blur-3xl border border-slate-700/70 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl animate-slideUp"
+        className="glass animate-modal-in relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-purple-500/10 to-pink-500/10 rounded-xl pointer-events-none"></div>
+        <div className="grad-bar h-1 w-full" />
 
-        {/* Content wrapper */}
-        <div className="relative z-10">
-        {/* Modal Header */}
-        <div className="sticky top-0 bg-slate-900/90 backdrop-blur-2xl border-b border-slate-700/60 p-6 flex justify-between items-start rounded-t-xl">
+        <div className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-white/5 bg-panel/90 p-6 backdrop-blur-xl">
           <div>
-            <h3 className="text-2xl font-bold text-gray-200 mb-2">
-              {project.title}
-            </h3>
-            <p className="text-sm text-gray-500">
-              Period: {project.period}
-            </p>
+            <h3 className="text-xl font-bold text-white sm:text-2xl">{project.title}</h3>
+            <p className="mt-1 text-sm text-slate-500">Period: {project.period}</p>
           </div>
           <button
+            type="button"
             onClick={onClose}
-            className="text-gray-400 hover:text-gray-200 transition-colors"
+            aria-label="Close"
+            className="rounded-full p-2 text-slate-400 transition-colors hover:bg-white/5 hover:text-white"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <X className="h-5 w-5" />
           </button>
         </div>
 
-        {/* Modal Content */}
-        <div className="p-6 space-y-6">
-          {/* Description */}
-          <div>
-            <h4 className="text-sm font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-3">
-              Project Overview
-            </h4>
-            <ul className="space-y-2">
+        <div className="space-y-7 p-6">
+          <section>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-cyan-300">Project Overview</h4>
+            <ul className="space-y-2.5">
               {project.description.map((item, index) => (
-                <li key={index} className="flex gap-2 text-gray-700 dark:text-gray-400">
-                  <span className="text-cyan-600 dark:text-cyan-400 mt-1.5">▹</span>
+                <li key={index} className="flex gap-3 text-sm leading-relaxed text-slate-300">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500" />
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
 
-          {/* Technologies */}
-          <div>
-            <h4 className="text-sm font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-3">
-              Technologies Used
-            </h4>
+          <section>
+            <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-cyan-300">Technologies Used</h4>
             <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, index) => (
-                <span
-                  key={index}
-                  className="text-sm px-4 py-2 bg-gray-800 text-gray-300 rounded-full border border-gray-700"
-                >
+              {project.technologies.map((tech) => (
+                <span key={tech} className="rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-sm text-slate-200">
                   {tech}
                 </span>
               ))}
             </div>
-          </div>
+          </section>
 
-          {/* Action Buttons */}
-          <div>
-            <h4 className="text-sm font-semibold text-cyan-600 dark:text-cyan-400 uppercase tracking-wider mb-3">
-              Links
-            </h4>
-            <div className="flex gap-4">
-              {project.showGithub && (
-                <a 
-                  href={project.githubUrl}
-                  className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-cyan-400 transition-all rounded-lg border border-gray-700"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                  View Code
-                </a>
-              )}
-              {project.showLive && (
-                <a 
-                  href={project.liveUrl}
-                  className="flex items-center gap-2 px-6 py-3 bg-cyan-600 text-white hover:bg-cyan-500 transition-all rounded-lg"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                  </svg>
-                  Live Demo
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
+          <section>
+            <a
+              href="#contact"
+              onClick={onClose}
+              className="btn-grad inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold text-white"
+            >
+              Request Demo
+            </a>
+          </section>
         </div>
       </div>
     </div>
