@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageCircle, Send, X } from 'lucide-react';
+import { ArrowRight, MessageCircle, Send, X } from 'lucide-react';
 
 type Message = { role: 'user' | 'assistant'; content: string };
 
@@ -73,7 +73,7 @@ export default function AiChat() {
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                     m.role === 'user'
                       ? 'btn-grad text-white'
-                      : 'border border-white/10 bg-white/5 text-slate-200'
+                      : 'border border-cyan-400/40 bg-gradient-to-br from-cyan-400/15 via-blue-500/10 to-violet-500/20 text-white shadow-[0_0_18px_-6px_rgba(34,211,238,0.6)] ring-1 ring-violet-400/30'
                   }`}
                 >
                   {m.content}
@@ -105,14 +105,30 @@ export default function AiChat() {
         </div>
       )}
 
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-label={open ? 'Close assistant' : 'Open assistant'}
-        className="btn-grad grid h-14 w-14 place-items-center rounded-full text-white shadow-2xl"
-      >
-        {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
-      </button>
+      <div className="flex items-center gap-3">
+        {!open && (
+          <div className="attn-bob flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="rounded-full bg-gradient-to-r from-fuchsia-500 via-violet-500 to-cyan-400 p-[1.5px] shadow-[0_0_24px_-4px_rgba(168,85,247,0.7)] transition-transform hover:scale-[1.03]"
+            >
+              <span className="block rounded-full bg-[#0b0b14] px-5 py-2.5 text-sm font-semibold">
+                <span className="text-grad">Ask AI about me</span>
+              </span>
+            </button>
+            <ArrowRight className="attn-nudge h-5 w-5 shrink-0 text-violet-400" aria-hidden />
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? 'Close assistant' : 'Ask AI about me'}
+          className="attn-ring btn-grad grid h-14 w-14 shrink-0 place-items-center rounded-full text-white shadow-2xl"
+        >
+          {open ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
+        </button>
+      </div>
     </div>
   );
 }

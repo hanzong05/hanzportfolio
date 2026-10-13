@@ -26,7 +26,6 @@ PROJECTS
 - LiqueFact: geotechnical web app for soil liquefaction risk assessment using borehole data across Tarlac, Philippines. Interactive map with real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations (React, TypeScript, Vite, Leaflet).
 - BlueSpot Hub: multi-tenant guest app platform for 19+ campground and RV resort hubs, with an installable PWA, push notifications, and an admin panel (JavaScript, Firebase, Cloudflare Workers).
 - BlueSpot Guide: mobile-first campground and RV travel guide with a filterable directory of Premier Properties, interactive maps, and personalized recently viewed listings (WordPress, Beaver Builder).
-- BlueSpot iConnectHub: onboarding and welcome landing page built to display correctly across major email clients (HTML, CSS).
 - Forsyth Station RV Resort: full resort website with dynamic amenities, gallery, and events, built with WordPress, ACF, and custom post types.
 - Bartow Business Association: website for a business membership group in Cartersville and Bartow County, Georgia (WordPress).
 

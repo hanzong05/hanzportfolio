@@ -117,3 +117,32 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Attention effects for the AI chat launcher */
+@keyframes attn-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes attn-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+@keyframes attn-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.attn-bob { animation: attn-bob 2.4s ease-in-out infinite; }
+.attn-nudge { animation: attn-nudge 1.2s ease-in-out infinite; }
+.attn-ring { position: relative; isolation: isolate; }
+.attn-ring::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: rgba(168, 85, 247, 0.6);
+  animation: attn-ring 2s ease-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .attn-bob, .attn-nudge, .attn-ring::before { animation: none; }
+}

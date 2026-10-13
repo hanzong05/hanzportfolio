@@ -19,6 +19,10 @@ interface Project {
   liveUrl?: string;
   /** Optional screenshot path under /public, e.g. "/projects/farm2go.png" */
   image?: string;
+  /** Optional client name shown in the details popup */
+  client?: string;
+  /** Optional extra screenshots for the details popup gallery */
+  screenshots?: string[];
 }
 
 const categoryMeta: Record<Category, { label: string; grad: string; Icon: LucideIcon }> = {
@@ -32,7 +36,6 @@ const categoryMeta: Record<Category, { label: string; grad: string; Icon: Lucide
 const filters: { key: 'all' | Category; label: string }[] = [
   { key: 'all', label: 'All' },
   { key: 'web', label: 'Web' },
-  { key: 'business', label: 'Business Systems' },
   { key: 'ai', label: 'AI/ML' },
   { key: 'mobile', label: 'Mobile' },
   { key: 'tools', label: 'Tools' },
@@ -147,6 +150,7 @@ const projects: Project[] = [
   {
     id: 16,
     title: 'Forsyth Station RV Resort',
+    client: 'Forsyth Station RV Resort',
     image: '/projects/forsyth.png',
     period: '',
     category: 'web',
@@ -159,20 +163,9 @@ const projects: Project[] = [
     liveUrl: 'https://forsythstationrv.com/',
   },
   {
-    id: 18,
-    title: 'BlueSpot iConnectHub',
-    period: '',
-    category: 'web',
-    description: [
-      'Onboarding and welcome landing page built to display correctly across major email clients.',
-    ],
-    technologies: ['HTML', 'CSS', 'Email Templates'],
-    showGithub: false,
-    showLive: false,
-  },
-  {
     id: 17,
     title: 'Bartow Business Association',
+    client: 'Bartow Business Association',
     image: '/projects/bartow.png',
     period: '',
     category: 'web',
