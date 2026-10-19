@@ -11,6 +11,8 @@ interface Project {
   title: string;
   period: string;
   category: Category;
+  /** Optional extra categories so the project also appears under those filters */
+  alsoIn?: Category[];
   description: string[];
   technologies: string[];
   showGithub: boolean;
@@ -108,6 +110,7 @@ const projects: Project[] = [
     image: '/projects/liquefact.png',
     period: '2026',
     category: 'web',
+    alsoIn: ['ai'],
     description: [
       'Interactive map with real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations.',
     ],
@@ -195,9 +198,10 @@ export default function Projects() {
     setTimeout(() => setSelectedProject(null), 300);
   };
 
-  const visible = active === 'all' ? projects : projects.filter((p) => p.category === active);
+  const inCategory = (p: Project, key: Category) => p.category === key || (p.alsoIn ?? []).includes(key);
+  const visible = active === 'all' ? projects : projects.filter((p) => inCategory(p, active));
   const countFor = (key: 'all' | Category) =>
-    key === 'all' ? projects.length : projects.filter((p) => p.category === key).length;
+    key === 'all' ? projects.length : projects.filter((p) => inCategory(p, key)).length;
 
   return (
     <section id="projects" className="scroll-mt-24 px-4 py-24 sm:px-6">
