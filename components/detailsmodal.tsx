@@ -89,12 +89,14 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                 <span className="ml-3 truncate text-xs text-slate-500">{project.title}</span>
               </div>
               {current ? (
-                <img
-                  key={current}
-                  src={current}
-                  alt={`${project.title} screenshot ${active + 1}`}
-                  className="aspect-[16/10] w-full object-cover object-top"
-                />
+                <div className="max-h-[70vh] overflow-auto">
+                  <img
+                    key={current}
+                    src={current}
+                    alt={`${project.title} screenshot ${active + 1}`}
+                    className="block h-auto w-full max-w-none"
+                  />
+                </div>
               ) : (
                 <div className="grid aspect-[16/10] place-items-center text-sm text-slate-500">No screenshot yet</div>
               )}
