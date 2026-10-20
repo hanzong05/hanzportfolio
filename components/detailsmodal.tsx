@@ -89,12 +89,12 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                 <span className="ml-3 truncate text-xs text-slate-500">{project.title}</span>
               </div>
               {current ? (
-                <div className="max-h-[70vh] overflow-auto">
+                <div className="max-h-[60vh] overflow-y-auto overflow-x-hidden">
                   <img
                     key={current}
                     src={current}
                     alt={`${project.title} screenshot ${active + 1}`}
-                    className="block h-auto w-full max-w-none"
+                    className="block h-auto w-full max-w-full"
                   />
                 </div>
               ) : (
