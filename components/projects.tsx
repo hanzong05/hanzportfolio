@@ -96,9 +96,9 @@ const projects: Project[] = [
     period: '2026',
     category: 'ai',
     description: [
-      'Streamlined document processing with accurate text recognition and export capabilities.',
+      'Python machine learning text recognition that digitizes documents with accurate OCR and export capabilities.',
     ],
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'OCR'],
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Python', 'OCR'],
     showGithub: true,
     showLive: true,
     githubUrl: 'https://github.com/hanzong05/ocr-fe',
