@@ -80,7 +80,7 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
 
         <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.15fr_1fr]">
           {/* Left: screenshot gallery and technologies */}
-          <div className="space-y-5">
+          <div className="min-w-0 space-y-5">
             <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-xl">
               <div className="flex items-center gap-1.5 border-b border-white/5 bg-white/[0.03] px-4 py-2.5">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
@@ -156,7 +156,7 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
           </div>
 
           {/* Right: details */}
-          <div className="space-y-7">
+          <div className="min-w-0 space-y-7">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-violet-400">Project Details</p>
@@ -180,7 +180,7 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                 <div key={label} className="glass rounded-xl p-4">
                   <Icon className="mb-2 h-4 w-4 text-cyan-300" />
                   <p className="text-xs text-slate-500">{label}</p>
-                  <p className="text-sm font-semibold text-white">{value}</p>
+                  <p className="break-words text-sm font-semibold text-white">{value}</p>
                 </div>
               ))}
             </div>
