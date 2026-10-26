@@ -19,7 +19,7 @@ interface Project {
   showLive: boolean;
   githubUrl?: string;
   liveUrl?: string;
-  /** Optional screenshot path under /public, e.g. "/projects/farm2go.png" */
+  /** Optional screenshot path under /public, e.g. "/projects/farm2go.webp" */
   image?: string;
   /** Optional client name shown in the details popup */
   client?: string;
@@ -51,7 +51,7 @@ const projects: Project[] = [
   {
     id: 5,
     title: 'Farm2Go E-commerce',
-    image: '/projects/farm2go.png',
+    image: '/projects/farm2go.webp',
     period: '2024',
     category: 'mobile',
     description: [
@@ -66,7 +66,7 @@ const projects: Project[] = [
   {
     id: 9,
     title: 'Sugar Production Ticketing POS',
-    image: '/projects/sugar-pos.png',
+    image: '/projects/sugar-pos.webp',
     period: '2026',
     category: 'mobile',
     description: [
@@ -80,7 +80,7 @@ const projects: Project[] = [
   {
     id: 10,
     title: 'Affecta – AI-Powered Call Monitoring',
-    image: '/projects/affecta.png',
+    image: '/projects/affecta.webp',
     period: '2026',
     category: 'ai',
     description: [
@@ -96,7 +96,7 @@ const projects: Project[] = [
   {
     id: 11,
     title: 'OCR Document Scanner',
-    image: '/projects/ocr-document-scanner.png',
+    image: '/projects/ocr-document-scanner.webp',
     period: '2026',
     category: 'ai',
     description: [
@@ -111,7 +111,7 @@ const projects: Project[] = [
   {
     id: 12,
     title: 'LiqueFact – Soil Liquefaction Analysis',
-    image: '/projects/liquefact.png',
+    image: '/projects/liquefact.webp',
     period: '2026',
     category: 'ai',
     alsoIn: ['web'],
@@ -127,26 +127,26 @@ const projects: Project[] = [
   {
     id: 13,
     title: 'BlueSpot Hub – Campground & RV Resort PWA Platform',
-    image: '/projects/bluespot-hub.png',
+    image: '/projects/bluespot-hub.webp',
     screenshots: [
-      '/projects/hub-allatoona-landing-marine-resort.png',
-      '/projects/hub-big-meadow-family-campground.png',
-      '/projects/hub-blue-ridge-rv-resort.png',
-      '/projects/hub-blue-water-rv-resort.png',
-      '/projects/hub-buckeye-lake-koa-holiday.png',
-      '/projects/hub-carolina-camp-cedar.png',
-      '/projects/hub-forsyth-station-rv-resort.png',
-      '/projects/hub-grandstand-rv-park.png',
-      '/projects/hub-iron-mountain-park.png',
-      '/projects/hub-little-river-campground.png',
-      '/projects/hub-oak-lake-rv-resort.png',
-      '/projects/hub-sanwar-rv-resort.png',
-      '/projects/hub-splash-rv-resort.png',
-      '/projects/hub-stay-wilder-campground.png',
-      '/projects/hub-stone-mountain-park-campground.png',
-      '/projects/hub-sweetwater-valley-rv-park.png',
-      '/projects/hub-talking-rock-motorcoach-resort.png',
-      '/projects/hub-winding-waters-rv-resort.png',
+      '/projects/hub-allatoona-landing-marine-resort.webp',
+      '/projects/hub-big-meadow-family-campground.webp',
+      '/projects/hub-blue-ridge-rv-resort.webp',
+      '/projects/hub-blue-water-rv-resort.webp',
+      '/projects/hub-buckeye-lake-koa-holiday.webp',
+      '/projects/hub-carolina-camp-cedar.webp',
+      '/projects/hub-forsyth-station-rv-resort.webp',
+      '/projects/hub-grandstand-rv-park.webp',
+      '/projects/hub-iron-mountain-park.webp',
+      '/projects/hub-little-river-campground.webp',
+      '/projects/hub-oak-lake-rv-resort.webp',
+      '/projects/hub-sanwar-rv-resort.webp',
+      '/projects/hub-splash-rv-resort.webp',
+      '/projects/hub-stay-wilder-campground.webp',
+      '/projects/hub-stone-mountain-park-campground.webp',
+      '/projects/hub-sweetwater-valley-rv-park.webp',
+      '/projects/hub-talking-rock-motorcoach-resort.webp',
+      '/projects/hub-winding-waters-rv-resort.webp',
     ],
     period: '2026',
     category: 'web',
@@ -163,7 +163,7 @@ const projects: Project[] = [
   {
     id: 15,
     title: 'BlueSpot Guide',
-    image: '/projects/bluespot.png',
+    image: '/projects/bluespot.webp',
     period: '',
     category: 'web',
     description: [
@@ -178,18 +178,18 @@ const projects: Project[] = [
     id: 16,
     title: 'Forsyth Station RV Resort',
     client: 'Forsyth Station RV Resort',
-    image: '/projects/forsyth.png',
+    image: '/projects/forsyth.webp',
     screenshots: [
-      '/projects/forsyth-01-home.jpg',
-      '/projects/forsyth-02-ways-to-stay.jpg',
-      '/projects/forsyth-03-amenities.jpg',
-      '/projects/forsyth-04-pricing.jpg',
-      '/projects/forsyth-05-gallery.jpg',
-      '/projects/forsyth-06-map.jpg',
-      '/projects/forsyth-07-book-now.jpg',
-      '/projects/forsyth-08-things-to-do.jpg',
-      '/projects/forsyth-09-about.jpg',
-      '/projects/forsyth-10-contact.jpg',
+      '/projects/forsyth-01-home.webp',
+      '/projects/forsyth-02-ways-to-stay.webp',
+      '/projects/forsyth-03-amenities.webp',
+      '/projects/forsyth-04-pricing.webp',
+      '/projects/forsyth-05-gallery.webp',
+      '/projects/forsyth-06-map.webp',
+      '/projects/forsyth-07-book-now.webp',
+      '/projects/forsyth-08-things-to-do.webp',
+      '/projects/forsyth-09-about.webp',
+      '/projects/forsyth-10-contact.webp',
     ],
     period: '',
     category: 'web',
@@ -205,7 +205,7 @@ const projects: Project[] = [
     id: 17,
     title: 'Bartow Business Association',
     client: 'Bartow Business Association',
-    image: '/projects/bartow.png',
+    image: '/projects/bartow.webp',
     period: '',
     category: 'web',
     description: [
@@ -221,18 +221,18 @@ const projects: Project[] = [
     id: 37,
     title: 'Pine Ridge Campground',
     client: 'Pine Ridge Campground',
-    image: '/projects/pineridge-01-home.jpg',
+    image: '/projects/pineridge-01-home.webp',
     screenshots: [
-      '/projects/pineridge-01-home.jpg',
-      '/projects/pineridge-02-amenities.jpg',
-      '/projects/pineridge-03-map.jpg',
-      '/projects/pineridge-04-pricing.jpg',
-      '/projects/pineridge-05-gallery.jpg',
-      '/projects/pineridge-06-guest-info.jpg',
-      '/projects/pineridge-07-faq.jpg',
-      '/projects/pineridge-08-events.jpg',
-      '/projects/pineridge-09-things-to-do.jpg',
-      '/projects/pineridge-10-contact.jpg',
+      '/projects/pineridge-01-home.webp',
+      '/projects/pineridge-02-amenities.webp',
+      '/projects/pineridge-03-map.webp',
+      '/projects/pineridge-04-pricing.webp',
+      '/projects/pineridge-05-gallery.webp',
+      '/projects/pineridge-06-guest-info.webp',
+      '/projects/pineridge-07-faq.webp',
+      '/projects/pineridge-08-events.webp',
+      '/projects/pineridge-09-things-to-do.webp',
+      '/projects/pineridge-10-contact.webp',
     ],
     period: '',
     category: 'web',
@@ -247,12 +247,12 @@ const projects: Project[] = [
   {
     id: 38,
     title: 'CampMap Wayfinder',
-    image: '/projects/campmap-wayfinder.jpg',
+    image: '/projects/campmap-wayfinder.webp',
     screenshots: [
-      '/projects/campmap-wayfinder.jpg',
-      '/projects/campmap-02-find-campsite.jpg',
-      '/projects/campmap-03-select-navigate.jpg',
-      '/projects/campmap-04-turn-by-turn.jpg',
+      '/projects/campmap-wayfinder.webp',
+      '/projects/campmap-02-find-campsite.webp',
+      '/projects/campmap-03-select-navigate.webp',
+      '/projects/campmap-04-turn-by-turn.webp',
     ],
     galleryFit: 'contain',
     imageCaption: 'Concept illustrations of the wayfinder on desktop and mobile (search and pick a campsite, select a destination, turn-by-turn route). Not screenshots of the live app.',
@@ -439,6 +439,7 @@ export default function Projects() {
                       src={project.image}
                       alt={`${project.title} screenshot`}
                       loading="lazy"
+                      decoding="async"
                       className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>

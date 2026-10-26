@@ -149,7 +149,7 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                       i === active ? 'border-violet-400' : 'border-white/10 opacity-70 hover:opacity-100'
                     }`}
                   >
-                    <img src={src} alt="" className="h-full w-full object-cover object-top" />
+                    <img src={src} alt="" loading="lazy" decoding="async" className="h-full w-full object-cover object-top" />
                   </button>
                 ))}
               </div>

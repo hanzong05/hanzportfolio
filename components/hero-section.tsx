@@ -53,7 +53,11 @@ export default function HeroSection() {
           <div aria-hidden className="absolute -right-4 top-6 h-[88%] w-[78%] rounded-[2rem] bg-gradient-to-br from-brand/80 to-blue-300/60 lg:-right-2" />
           <div className="relative ml-auto w-[88%] overflow-hidden rounded-[2rem] bg-slate-200 shadow-2xl shadow-brand/20 ring-1 ring-black/5">
             <img
-              src="/dev.png"
+              src="/dev.webp"
+              width={503}
+              height={496}
+              fetchPriority="high"
+              decoding="async"
               alt="Portrait of Hanz Jansen Pillerva, full-stack and CMS developer"
               className="block h-auto w-full object-cover"
             />

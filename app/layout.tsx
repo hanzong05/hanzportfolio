@@ -57,7 +57,7 @@ const personJsonLd = {
   name: SITE.fullName,
   alternateName: SITE.name,
   url: SITE_URL,
-  image: `${SITE_URL}/profile.jpg`,
+  image: `${SITE_URL}/profile.webp`,
   email: `mailto:${SITE.email}`,
   jobTitle: SITE.jobTitle,
   description: SITE.description,

@@ -28,7 +28,7 @@ export default function About() {
 
         <div className="relative mx-auto w-full max-w-xs lg:max-w-none">
           <div className="overflow-hidden rounded-[1.75rem] border border-line bg-slate-200 shadow-xl shadow-brand/10">
-            <img src="/profile.jpg" alt="Portrait of Hanz Pillerva" className="block h-auto w-full object-cover" />
+            <img src="/profile.webp" width={854} height={1280} loading="lazy" decoding="async" alt="Portrait of Hanz Pillerva" className="block h-auto w-full object-cover" />
           </div>
         </div>
 
