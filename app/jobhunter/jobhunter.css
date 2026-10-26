@@ -1,0 +1,155 @@
+/* Job Hunter styles. Every rule is scoped under .jh so it cannot change the rest of the portfolio. */
+.jh {
+  --bg: #0b0c0e;
+  --side: #0e1013;
+  --panel: #121417;
+  --panel-2: #171a1f;
+  --border: #262a31;
+  --text: #f5f6f8;
+  --muted: #8b93a1;
+  --green: #34d399;
+  --amber: #fbbf24;
+  --red: #f87171;
+  --blue: #60a5fa;
+  color-scheme: dark;
+}
+.jh * { box-sizing: border-box; }
+.jh {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.55 system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+.jh a { color: var(--blue); text-decoration: none; }
+.jh a:hover { text-decoration: underline; }
+.jh h1, .jh h2, .jh h3 { margin: 0; line-height: 1.25; }
+.jh h1 { font-size: 24px; }
+.jh h2 { font-size: 15px; font-weight: 600; }
+.jh p { margin: 0 0 10px; }
+.jh .muted { color: var(--muted); }
+.jh .small { font-size: 12px; }
+.jh .error { color: var(--red); font-size: 13px; }
+.jh .success { color: var(--green); font-size: 13px; }
+.jh .shell { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+.jh .shell.has-job { grid-template-columns: 260px minmax(0, 1fr) 340px; }
+.jh .page { display: grid; grid-template-columns: 260px minmax(0, 1fr); min-height: 100vh; }
+.jh .center { padding: 28px 32px 56px; min-width: 0; overflow-x: hidden; }
+.jh .intel { background: var(--panel); border-left: 1px solid var(--border); padding: 24px 20px; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
+.jh .sidebar {
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  background: var(--side); border-right: 1px solid var(--border);
+  padding: 20px 14px; display: flex; flex-direction: column; gap: 18px;
+}
+.jh .brand strong { display: block; font-size: 16px; }
+.jh .brand span { color: var(--muted); font-size: 12px; }
+.jh .nav-section { display: flex; flex-direction: column; gap: 2px; }
+.jh .nav-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 0 10px 4px; }
+.jh .nav-item {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 7px 10px; border-radius: 8px; color: var(--text);
+}
+.jh .nav-item:hover { background: var(--panel-2); text-decoration: none; }
+.jh .nav-item.active { background: var(--panel-2); box-shadow: inset 2px 0 0 var(--blue); }
+.jh .nav-item .glyph { width: 16px; text-align: center; color: var(--muted); }
+.jh .nav-item .hint { display: block; color: var(--muted); font-size: 11px; }
+.jh .badge-count {
+  min-width: 22px; text-align: center; font-size: 11px; padding: 1px 7px;
+  border-radius: 999px; background: #1f242b; color: var(--muted);
+}
+.jh .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border);
+  background: var(--panel-2); color: var(--text); font: inherit; cursor: pointer;
+  min-height: 36px;
+}
+.jh .btn:hover { border-color: #3a414b; text-decoration: none; }
+.jh .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.jh .btn.primary { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.jh .btn.green { background: rgba(52, 211, 153, 0.12); border-color: rgba(52, 211, 153, 0.4); color: var(--green); }
+.jh .btn.amber { background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.4); color: var(--amber); }
+.jh .btn.red { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.4); color: var(--red); }
+.jh .btn.ghost { background: transparent; }
+.jh .btn.small { padding: 4px 10px; min-height: 28px; font-size: 12px; }
+.jh .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.jh input, .jh select, .jh textarea {
+  width: 100%; padding: 8px 10px; border-radius: 8px;
+  border: 1px solid var(--border); background: #0f1114; color: var(--text); font: inherit;
+}
+.jh textarea { min-height: 88px; resize: vertical; }
+.jh label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--muted); }
+.jh .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.jh .field-grid .full { grid-column: 1 / -1; }
+.jh .form-stack { display: flex; flex-direction: column; gap: 14px; }
+.jh .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.jh .card + .card { margin-top: 14px; }
+.jh .section-title { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.jh .grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.jh .stat { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.jh .stat .value { font-size: 26px; font-weight: 600; }
+.jh .stat .label { color: var(--muted); font-size: 12px; }
+.jh .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; border: 1px solid var(--border); color: var(--muted); }
+.jh .badge.high { color: var(--red); border-color: rgba(248, 113, 113, 0.4); }
+.jh .badge.maybe { color: var(--amber); border-color: rgba(251, 191, 36, 0.4); }
+.jh .badge.good { color: var(--green); border-color: rgba(52, 211, 153, 0.4); }
+.jh .badge.stage { color: var(--blue); border-color: rgba(96, 165, 250, 0.4); }
+.jh .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) 160px auto; gap: 10px; margin-bottom: 16px; }
+.jh .job-list { display: flex; flex-direction: column; gap: 8px; }
+.jh .job-row {
+  display: block; padding: 12px 14px; border-radius: 10px;
+  background: var(--panel); border: 1px solid var(--border); color: var(--text);
+}
+.jh .job-row:hover { border-color: #3a414b; text-decoration: none; }
+.jh .job-row.selected { border-color: var(--blue); }
+.jh .job-row .title { font-weight: 600; }
+.jh .job-row .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+.jh .job-row .tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.jh .job-head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.jh .score-pill {
+  min-width: 92px; text-align: center; padding: 12px 14px; border-radius: 12px;
+  background: var(--panel); border: 1px solid var(--border);
+}
+.jh .score-pill .num { font-size: 30px; font-weight: 700; }
+.jh .score-pill .lbl { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.jh .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0 6px; }
+.jh .meta-grid div { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+.jh .meta-grid .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.jh .pre { white-space: pre-wrap; background: #0f1114; border: 1px solid var(--border); border-radius: 10px; padding: 14px; font: 13px/1.6 ui-monospace, Menlo, Consolas, monospace; margin: 0; }
+.jh .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.jh .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; background: #0f1114; border: 1px solid var(--border); }
+.jh .checklist input { width: auto; margin-top: 3px; }
+.jh .checklist label { flex-direction: row; color: var(--text); font-size: 14px; align-items: flex-start; gap: 10px; }
+.jh .checklist .done { color: var(--muted); text-decoration: line-through; }
+.jh .details-block summary { cursor: pointer; color: var(--muted); }
+.jh details.editor summary { cursor: pointer; font-weight: 600; margin-bottom: 12px; }
+.jh .intel h3 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin: 18px 0 8px; }
+.jh .intel ul { margin: 0; padding-left: 18px; }
+.jh .intel li { margin-bottom: 4px; }
+.jh .chip-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.jh .chip { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--border); }
+.jh .chip.ok { color: var(--green); border-color: rgba(52, 211, 153, 0.35); }
+.jh .chip.miss { color: var(--red); border-color: rgba(248, 113, 113, 0.35); }
+.jh .board { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; align-items: start; }
+.jh .column { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; min-height: 120px; }
+.jh .column h2 { display: flex; justify-content: space-between; margin-bottom: 10px; }
+.jh .card-mini { display: block; padding: 10px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); margin-bottom: 8px; }
+.jh .card-mini:hover { text-decoration: none; border-color: #3a414b; }
+.jh .bar-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 40px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 12px; }
+.jh .bar-track { background: #0f1114; border-radius: 6px; height: 12px; overflow: hidden; border: 1px solid var(--border); }
+.jh .bar-fill { height: 100%; background: var(--blue); }
+.jh .bar-fill.good { background: var(--green); }
+.jh .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+.jh .pill-row a { padding: 5px 10px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+.jh .pill-row a.active { color: var(--text); border-color: var(--blue); }
+.jh .empty { text-align: center; padding: 40px 16px; color: var(--muted); border: 1px dashed var(--border); border-radius: 12px; }
+@media (max-width: 1200px) {
+.jh .shell.has-job { grid-template-columns: 240px minmax(0, 1fr); }
+.jh .shell.has-job .intel { grid-column: 1 / -1; height: auto; position: static; border-left: 0; border-top: 1px solid var(--border); }
+}
+@media (max-width: 860px) {
+.jh .shell, .jh .shell.has-job, .jh .page { grid-template-columns: 1fr; }
+.jh .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+.jh .center { padding: 18px 16px 48px; }
+.jh .intel { height: auto; position: static; border-left: 0; }
+.jh .toolbar { grid-template-columns: 1fr; }
+.jh .field-grid { grid-template-columns: 1fr; }
+}
