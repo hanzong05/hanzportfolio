@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
-import { Briefcase, BrainCircuit, Globe, Smartphone, Wrench } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Briefcase, BrainCircuit, Globe, Smartphone, Wrench } from 'lucide-react';
 import DetailsModal from './detailsmodal';
 
 type Category = 'web' | 'business' | 'ai' | 'mobile' | 'tools';
@@ -242,6 +242,16 @@ const projects: Project[] = [
   },
 ];
 
+const badgeTone: Record<Category, string> = {
+  web: 'bg-blue-50 text-blue-700',
+  business: 'bg-violet-50 text-violet-700',
+  ai: 'bg-emerald-50 text-emerald-700',
+  mobile: 'bg-rose-50 text-rose-700',
+  tools: 'bg-amber-50 text-amber-700',
+};
+
+const FEATURED_ID = 13;
+
 export default function Projects() {
   const [active, setActive] = useState<'all' | Category>('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -262,54 +272,88 @@ export default function Projects() {
   const countFor = (key: 'all' | Category) =>
     key === 'all' ? projects.length : projects.filter((p) => inCategory(p, key)).length;
 
-  return (
-    <section id="projects" className="scroll-mt-24 px-4 py-24 sm:px-6">
-      <div className="mx-auto max-w-7xl">
-        <div className="mb-12 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <span className="inline-block rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
-              Projects
-            </span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Featured Projects</h2>
-          </div>
+  const featured = projects.find((p) => p.id === FEATURED_ID);
+  const grid = visible.filter((p) => p.id !== FEATURED_ID);
 
-          {/* Filter chips */}
-          <div className="flex flex-wrap gap-2">
-            {filters.map((f) => {
-              const isActive = active === f.key;
-              return (
-                <button
-                  key={f.key}
-                  type="button"
-                  onClick={() => setActive(f.key)}
-                  aria-pressed={isActive}
-                  className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-                    isActive
-                      ? 'btn-grad text-white'
-                      : 'glass text-slate-300 hover:border-violet-400/40 hover:text-white'
-                  }`}
-                >
-                  {f.label}
-                  <span className={`ml-2 text-xs ${isActive ? 'text-white/80' : 'text-slate-500'}`}>
-                    {countFor(f.key)}
-                  </span>
-                </button>
-              );
-            })}
+  return (
+    <section id="projects" className="scroll-mt-24 border-t border-line px-4 py-20 sm:px-6 md:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand">03 · Featured projects</p>
+            <h2 className="mt-4 text-[clamp(2.25rem,4vw,3.5rem)] font-extrabold leading-[1.05] tracking-tight text-navy">
+              Selected work,<br />built for real-world use.
+            </h2>
           </div>
+          <p className="max-w-md text-sm leading-relaxed text-slate-600">
+            A selection of applications, platforms, and websites I&apos;ve worked on, from internal business tools to
+            digital experiences.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {visible.map((project) => {
+        {featured && (
+          <article className="card-light mt-12 grid items-center gap-8 overflow-hidden rounded-3xl p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <span className="inline-flex rounded-full bg-lime px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy">
+                Featured project
+              </span>
+              <h3 className="mt-5 text-[clamp(2rem,3.4vw,3rem)] font-extrabold leading-[1.05] tracking-tight text-navy">
+                BlueSpot Hub
+              </h3>
+              <p className="mt-1 text-lg font-semibold text-navy">Campground &amp; RV Resort Platform</p>
+              <p className="mt-4 max-w-md leading-relaxed text-slate-600">
+                A GoHighLevel-connected guest application platform for 19 campground and RV resort hubs, with individual
+                guest apps, push notifications, and admin panels.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {['GoHighLevel', 'Firebase', 'Cloudflare Workers'].map((t) => (
+                  <li key={t} className="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">{t}</li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button type="button" onClick={() => openModal(featured)} className="btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
+                  View Project <ArrowRight className="h-4 w-4" />
+                </button>
+                <button type="button" onClick={() => openModal(featured)} className="btn-outline inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
+                  Browse the Hubs <ArrowUpRight className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-line bg-slate-100 shadow-2xl shadow-brand/10">
+              <img src={featured.image} alt="BlueSpot Hub guest app preview" className="block h-auto w-full" />
+            </div>
+          </article>
+        )}
+
+        {/* Filter chips */}
+        <div className="mt-14 flex flex-wrap gap-2" role="group" aria-label="Filter projects">
+          {filters.filter((f) => countFor(f.key) > 0).map((f) => {
+            const isActive = active === f.key;
+            return (
+              <button
+                key={f.key}
+                type="button"
+                onClick={() => setActive(f.key)}
+                aria-pressed={isActive}
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                  isActive ? 'bg-navy text-white' : 'border border-line bg-paper text-slate-600 hover:border-navy hover:text-navy'
+                }`}
+              >
+                {f.label}
+                <span className={`ml-2 text-xs ${isActive ? 'text-white/70' : 'text-slate-400'}`}>{countFor(f.key)}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {grid.map((project) => {
             const meta = categoryMeta[project.category];
             const { Icon } = meta;
             return (
-              <article
-                key={project.id}
-                className="glass glass-hover group flex flex-col overflow-hidden rounded-2xl"
-              >
+              <article key={project.id} className="card-light group flex flex-col overflow-hidden rounded-2xl">
                 {project.image && (
-                  <div className="relative h-44 overflow-hidden border-b border-white/5 bg-slate-900">
+                  <div className="relative h-44 overflow-hidden border-b border-line bg-slate-100">
                     <img
                       src={project.image}
                       alt={`${project.title} screenshot`}
@@ -319,44 +363,36 @@ export default function Projects() {
                   </div>
                 )}
                 <div className="flex flex-1 flex-col p-6">
-                  <span className={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-gradient-to-r ${meta.grad} px-3 py-1 text-xs font-medium text-white`}>
-                    <Icon className="h-3.5 w-3.5" />
+                  <span className={`mb-4 inline-flex w-fit items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${badgeTone[project.category]}`}>
+                    <Icon className="h-3.5 w-3.5" aria-hidden />
                     {meta.label}
                   </span>
-                  <h3 className="mb-2 text-base font-semibold leading-snug text-white">{project.title}</h3>
-                  {project.period && <p className="mb-4 text-xs text-slate-500">Period: {project.period}</p>}
-
-                  <p className="mb-5 line-clamp-2 text-sm leading-relaxed text-slate-400">
-                    {project.description[0]}
-                  </p>
+                  <h3 className="mb-2 text-base font-bold leading-snug text-navy">{project.title}</h3>
+                  <p className="mb-5 line-clamp-3 text-sm leading-relaxed text-slate-600">{project.description[0]}</p>
 
                   <div className="mb-6 flex flex-wrap gap-2">
                     {project.technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-300"
-                      >
+                      <span key={tech} className="rounded-md border border-line bg-cream px-2.5 py-1 text-xs font-medium text-slate-700">
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="rounded-md px-2 py-1 text-xs text-slate-500">
-                        +{project.technologies.length - 4}
-                      </span>
+                      <span className="px-1 py-1 text-xs text-slate-400">+{project.technologies.length - 4}</span>
                     )}
                   </div>
 
-                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-white/5 pt-4">
-                    <a
-                      href="#contact"
-                      className="inline-flex items-center gap-1.5 text-sm font-medium text-cyan-300 transition-colors hover:text-white"
-                    >
-                      Request Demo
-                    </a>
+                  <div className="mt-auto flex items-center justify-between gap-3 border-t border-line pt-4">
+                    {project.showLive && project.liveUrl ? (
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-sm font-semibold text-brand hover:underline">
+                        Live site <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    ) : (
+                      <a href="#contact" className="text-sm font-semibold text-brand hover:underline">Request demo</a>
+                    )}
                     <button
                       type="button"
                       onClick={() => openModal(project)}
-                      className="rounded-full border border-white/10 px-3.5 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-violet-400/50 hover:text-white"
+                      className="rounded-full border border-line px-4 py-1.5 text-xs font-semibold text-navy transition-colors hover:border-navy"
                     >
                       Details
                     </button>

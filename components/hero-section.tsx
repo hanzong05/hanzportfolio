@@ -1,112 +1,71 @@
 import React from 'react';
-import { ArrowRight, MapPin } from 'lucide-react';
-import { SiReact, SiLaravel, SiPython, SiMysql, SiNextdotjs } from 'react-icons/si';
-import { GithubIcon, LinkedinIcon, MailIcon } from './icons';
+import { ArrowRight, ArrowUpRight, MapPin } from 'lucide-react';
 
-const techIcons = [
-  { Icon: SiReact, color: '#61DAFB', name: 'React' },
-  { Icon: SiLaravel, color: '#FF2D20', name: 'Laravel' },
-  { Icon: SiNextdotjs, color: '#e5e7eb', name: 'Next.js' },
-  { Icon: SiPython, color: '#3776AB', name: 'Python' },
-  { Icon: SiMysql, color: '#4479A1', name: 'MySQL' },
-];
-
-const socials = [
-  { label: 'GitHub', href: 'https://github.com/hanzpillerva', Icon: GithubIcon },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/hanz-pillerva', Icon: LinkedinIcon },
-  { label: 'Email', href: 'mailto:hanzongpillerva@gmail.com', Icon: MailIcon },
+// Every figure here comes from the resume / portfolio data:
+// experience begins Sept 2024, 10 showcased projects, 19 campground hubs.
+const stats = [
+  { value: '2+', label: 'Years Experience' },
+  { value: '10', label: 'Projects Showcased' },
+  { value: '19', label: 'Campground Hubs Platform' },
 ];
 
 export default function HeroSection() {
   return (
-    <section id="top" className="relative overflow-x-clip px-4 pt-32 pb-16 sm:px-6 md:pt-40 md:pb-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2">
-        {/* Left: copy */}
+    <section id="top" className="relative overflow-x-clip px-4 pt-28 pb-16 sm:px-6 md:pt-36 md:pb-24">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8">
+        {/* Copy */}
         <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/5 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-300">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-400" />
-            </span>
-            Available for freelance &amp; remote work
-          </span>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand">
+            Full-Stack &amp; CMS Developer <span className="mx-1 text-slate-400">•</span> Philippines
+          </p>
 
-          <h1 className="mt-6 text-[clamp(2.75rem,6vw,5.5rem)] font-extrabold leading-[1.02] tracking-tight text-white">
-            I build digital experiences and <span className="text-grad">systems that work.</span>
+          <h1 className="mt-5 text-[clamp(2.5rem,5.4vw,4.5rem)] font-extrabold leading-[1.02] tracking-tight text-navy">
+            I build digital products that solve <span className="text-brand">real business problems.</span>
           </h1>
 
-          <p className="mt-6 text-sm font-medium tracking-wide text-slate-200 sm:text-base">
-            Full-Stack Developer <span className="mx-2 text-slate-600">·</span> CMS Developer{' '}
-            <span className="mx-2 text-slate-600">·</span> Systems Developer
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-600 sm:text-lg">
+            I&apos;m Hanz Jansen Pillerva, a full-stack and CMS developer building web applications, business systems,
+            and connected digital platforms for companies, organizations, and entrepreneurs.
           </p>
-
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
-            I&apos;m Hanz Jansen Pillerva, a full-stack and CMS developer building business websites, custom
-            applications, and connected digital platforms that solve real-world problems.
-          </p>
-
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#contact"
-              className="btn-grad inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
-            >
-              Let&apos;s Work Together <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#projects"
-              className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-slate-100 transition-colors hover:border-violet-400/50"
-            >
-              Explore My Work
-            </a>
-          </div>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-300">
-              <MapPin className="h-3.5 w-3.5 text-cyan-300" /> Based in the Philippines
-            </span>
-            {socials.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith('mailto') ? undefined : '_blank'}
-                rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                aria-label={label}
-                className="glass flex h-10 w-10 items-center justify-center rounded-full text-slate-300 transition-colors hover:text-white"
-              >
-                <Icon className="h-4 w-4" />
-              </a>
-            ))}
+            <a href="#contact" className="btn-dark inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">
+              Let&apos;s Work Together <ArrowRight className="h-4 w-4" />
+            </a>
+            <a href="#projects" className="btn-outline inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-semibold">
+              Explore My Work <ArrowUpRight className="h-4 w-4" />
+            </a>
           </div>
+
+          <dl className="mt-12 grid max-w-md grid-cols-3 gap-6">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <dt className="sr-only">{s.label}</dt>
+                <dd className="text-3xl font-bold text-navy sm:text-4xl">{s.value}</dd>
+                <p className="mt-1 text-xs leading-snug text-slate-500" aria-hidden>{s.label}</p>
+              </div>
+            ))}
+          </dl>
         </div>
 
-        {/* Right: portrait with floating elements */}
-        <div className="relative mx-auto w-full max-w-md lg:max-w-lg">
-          {/* Halo */}
-          <div className="absolute left-1/2 top-1/2 -z-10 h-[115%] w-[115%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-violet-600/40 via-blue-600/20 to-cyan-400/30 blur-3xl" />
-
-          <div className="animate-glow-shift relative overflow-hidden rounded-[2rem] ring-1 ring-white/10">
+        {/* Portrait */}
+        <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
+          <div aria-hidden className="absolute -right-4 top-6 h-[88%] w-[78%] rounded-[2rem] bg-gradient-to-br from-brand/80 to-blue-300/60 lg:-right-2" />
+          <div className="relative ml-auto w-[88%] overflow-hidden rounded-[2rem] bg-slate-200 shadow-2xl shadow-brand/20 ring-1 ring-black/5">
             <img
               src="/dev.png"
-              alt="Hanz Pillerva, Full-Stack Developer"
-              className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
+              alt="Portrait of Hanz Jansen Pillerva, full-stack and CMS developer"
+              className="block h-auto w-full object-cover"
             />
           </div>
-
-          {/* Verified stat cards (from resume) */}
-          <div className="glass animate-float absolute -right-2 top-4 hidden rounded-2xl px-5 py-4 shadow-2xl sm:block md:-right-6">
-            <p className="text-3xl font-bold text-grad">19</p>
-            <p className="mt-1 text-xs text-slate-400">Campground &amp; RV resort<br />hubs built</p>
-          </div>
-          <div className="glass absolute -left-2 bottom-24 hidden rounded-2xl px-5 py-4 shadow-2xl sm:block md:-left-6">
-            <p className="text-3xl font-bold text-grad">4</p>
-            <p className="mt-1 text-xs text-slate-400">Roles across<br />web, systems &amp; support</p>
-          </div>
-
-          {/* Tech icon bar */}
-          <div className="glass absolute -bottom-6 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-2xl px-6 py-3.5 shadow-2xl">
-            {techIcons.map(({ Icon, color, name }) => (
-              <Icon key={name} title={name} className="h-6 w-6 transition-transform hover:scale-125" style={{ color }} />
-            ))}
+          <div className="absolute -bottom-5 right-2 flex items-center gap-3 rounded-2xl border border-line bg-paper px-4 py-3 shadow-xl sm:right-6">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-emerald-50 text-emerald-600">
+              <MapPin className="h-4 w-4" />
+            </span>
+            <div className="text-xs leading-tight">
+              <p className="font-semibold text-navy">Based in the Philippines</p>
+              <p className="mt-0.5 text-slate-500">Open to Freelance &amp; Remote Work</p>
+            </div>
           </div>
         </div>
       </div>

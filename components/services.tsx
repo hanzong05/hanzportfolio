@@ -1,62 +1,70 @@
 import React from 'react';
-import { ArrowRight, Code2, Globe2, ShoppingBag, Wrench } from 'lucide-react';
-import SectionHeader from './section-header';
+import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
-    title: 'Custom Web Systems',
-    body: 'Business systems, HRIS, payroll, dashboards, and booking tools.',
-    Icon: Code2,
+    n: '01',
+    title: 'Custom Web Applications',
+    items: ['Business systems & internal tools', 'HRIS and payroll workflows', 'Dashboards and reporting', 'Database-driven applications'],
   },
   {
-    title: 'Website Development',
-    body: 'WordPress, Beaver Builder, and custom sites built with Laravel, React, and Next.js.',
-    Icon: Globe2,
+    n: '02',
+    title: 'WordPress & CMS Development',
+    items: ['Custom WordPress websites', 'Beaver Builder layouts', 'Advanced Custom Fields (ACF)', 'Custom Post Types'],
   },
   {
-    title: 'E-commerce Solutions',
-    body: 'Shopify setup, customization, and integrations.',
-    Icon: ShoppingBag,
+    n: '03',
+    title: 'Guest Apps & Digital Platforms',
+    items: ['GoHighLevel integrations', 'Multi-location platforms', 'Push notifications', 'Admin panels and automation'],
   },
   {
-    title: 'IT Support & Setup',
-    body: 'POS systems, networking, CCTV, PC setup, and troubleshooting.',
-    Icon: Wrench,
+    n: '04',
+    title: 'Technical Support & Consulting',
+    items: ['POS systems and hardware support', 'CCTV and network setup', 'Computer and printer troubleshooting', 'System optimization'],
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="scroll-mt-24 px-4 py-24 sm:px-6">
+    <section id="services" className="scroll-mt-24 border-t border-line px-4 py-20 sm:px-6 md:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">What I do</p>
-            <h2 className="mt-3 text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-white">
-              Services for <br className="hidden sm:block" />
-              <span className="text-grad">growing businesses</span>
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-brand">02 · Services</p>
+            <h2 className="mt-4 text-[clamp(2.25rem,4vw,3.5rem)] font-extrabold leading-[1.05] tracking-tight text-navy">
+              What I can help you build.
             </h2>
-            <p className="mt-4 max-w-lg text-slate-400">
-              I help businesses build, improve, and run digital systems, from custom platforms to websites and technical
-              support.
-            </p>
           </div>
-          <a href="#contact" className="glass inline-flex w-fit items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-slate-100">
-            Discuss a project <ArrowRight className="h-4 w-4" />
-          </a>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center lg:max-w-xl">
+            <p className="text-sm leading-relaxed text-slate-600">
+              From internal systems to customer-facing websites, I turn business requirements into practical,
+              maintainable solutions.
+            </p>
+            <a href="#contact" className="btn-outline inline-flex shrink-0 items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-brand">
+              Discuss a Project <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {services.map(({ title, body, Icon }) => (
-            <div key={title} className="glass glass-hover flex flex-col rounded-2xl p-6">
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-violet-500/25 to-cyan-400/20 ring-1 ring-white/10">
-                <Icon className="h-5 w-5 text-cyan-300" />
-              </span>
-              <h3 className="mt-6 text-lg font-semibold text-white">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-400">{body}</p>
-            </div>
+        <ol className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-line">
+          {services.map((s) => (
+            <li key={s.n} className="flex flex-col lg:px-7 lg:first:pl-0 lg:last:pr-0">
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-lime font-mono text-sm font-bold text-navy">{s.n}</span>
+              <h3 className="mt-5 text-lg font-bold leading-snug text-navy">{s.title}</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                {s.items.map((i) => (
+                  <li key={i} className="flex gap-2">
+                    <span aria-hidden className="mt-2 h-1 w-1 shrink-0 rounded-full bg-slate-400" />
+                    {i}
+                  </li>
+                ))}
+              </ul>
+              <a href="#contact" className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-semibold text-brand hover:underline">
+                Learn More <ArrowRight className="h-4 w-4" />
+              </a>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   );

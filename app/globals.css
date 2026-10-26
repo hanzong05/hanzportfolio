@@ -12,6 +12,12 @@
   --color-blue: #3b82f6;
   --color-violet: #8b5cf6;
   --color-cyan: #22d3ee;
+  --color-cream: #f5f2ea;
+  --color-paper: #ffffff;
+  --color-navy: #0b1224;
+  --color-line: #e3ded0;
+  --color-brand: #2456e8;
+  --color-lime: #dfeb8c;
 }
 
 html {
@@ -19,8 +25,8 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: #a1aabc;
+  background: var(--color-cream);
+  color: #3f4756;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -152,4 +158,41 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .attn-bob, .attn-nudge, .attn-ring::before { animation: none; }
+}
+
+
+/* Light editorial theme primitives */
+.card-light {
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 1px 2px rgba(11, 18, 36, 0.04);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card-light:hover {
+  border-color: rgba(36, 86, 232, 0.35);
+  box-shadow: 0 18px 40px -22px rgba(36, 86, 232, 0.35);
+  transform: translateY(-2px);
+}
+.btn-dark {
+  background: var(--color-navy);
+  color: #fff;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+.btn-dark:hover { background: #17213f; transform: translateY(-1px); }
+.btn-blue {
+  background: var(--color-brand);
+  color: #fff;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.btn-blue:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  color: var(--color-navy);
+  border: 1px solid rgba(11, 18, 36, 0.25);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.btn-outline:hover { background: rgba(11, 18, 36, 0.05); border-color: var(--color-navy); }
+.focus-ring:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
 }

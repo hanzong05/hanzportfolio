@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import Services from "@/components/services";
-import FeaturedProject from "@/components/featured-project";
+import TechStrip from "@/components/tech-strip";
 import About from "@/components/about";
 import WorkExperience from "@/components/experience";
 import Projects from "@/components/projects";
@@ -17,10 +17,11 @@ export default function PageLayout() {
       <Header />
       <main>
         <HeroSection />
+        <TechStrip />
         <About />
         <Services />
-        <WorkExperience />
         <Projects />
+        <WorkExperience />
         <TechSkills />
         <Education />
         <Contact />

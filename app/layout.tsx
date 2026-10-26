@@ -95,12 +95,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
 
-        {/* Ambient background glow */}
-        <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-          <div className="absolute -top-40 left-1/2 h-[520px] w-[860px] -translate-x-1/2 rounded-full bg-violet-600/20 blur-[120px]" />
-          <div className="absolute top-[40%] -right-40 h-[480px] w-[480px] rounded-full bg-cyan-500/10 blur-[120px]" />
-          <div className="absolute bottom-0 -left-40 h-[420px] w-[420px] rounded-full bg-blue-600/10 blur-[120px]" />
-        </div>
         {children}
         <Analytics />
       </body>
