@@ -21,18 +21,25 @@ const MAX_OUTPUT_TOKENS = 1024;
 
 async function askGemini(turns: Turn[], key: string): Promise<string> {
   const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "x-goog-api-key": key },
-    body: JSON.stringify({
-      systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
-      contents: turns.map((t) => ({
-        role: t.role === "assistant" ? "model" : "user",
-        parts: [{ text: t.content }],
-      })),
-      generationConfig: { maxOutputTokens: MAX_OUTPUT_TOKENS },
-    }),
-  });
+  const request = () =>
+    fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-goog-api-key": key },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents: turns.map((t) => ({
+          role: t.role === "assistant" ? "model" : "user",
+          parts: [{ text: t.content }],
+        })),
+        generationConfig: { maxOutputTokens: MAX_OUTPUT_TOKENS },
+      }),
+    });
+  // 503 ("high demand") and 429 are usually brief, so retry a couple of times before giving up.
+  let res = await request();
+  for (let attempt = 1; attempt <= 2 && (res.status === 503 || res.status === 429); attempt++) {
+    await new Promise((r) => setTimeout(r, 700 * attempt));
+    res = await request();
+  }
   if (!res.ok) throw new Error(`Gemini ${res.status}: ${(await res.text()).slice(0, 300)}`);
   const data = await res.json();
   const parts: { text?: string; thought?: boolean }[] = data?.candidates?.[0]?.content?.parts ?? [];
@@ -87,7 +94,7 @@ export async function POST(req: Request) {
         askOpenAICompatible(
           "https://api.groq.com/openai/v1/chat/completions",
           process.env.GROQ_API_KEY!,
-          process.env.GROQ_MODEL || "llama-3.3-70b-versatile",
+          process.env.GROQ_MODEL || "openai/gpt-oss-120b",
           turns
         ),
     });
@@ -99,7 +106,7 @@ export async function POST(req: Request) {
         askOpenAICompatible(
           "https://openrouter.ai/api/v1/chat/completions",
           process.env.OPENROUTER_API_KEY!,
-          process.env.OPENROUTER_MODEL || "meta-llama/llama-3.3-70b-instruct:free",
+          process.env.OPENROUTER_MODEL || "openrouter/free",
           turns
         ),
     });
