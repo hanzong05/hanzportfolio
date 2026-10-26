@@ -6,7 +6,7 @@ export const SITE = {
   fullName: "Hanz Jansen Pillerva",
   title: "Hanz Pillerva | Full-Stack & CMS Developer",
   description:
-    "Full-stack and CMS developer in the Philippines building WordPress websites, GoHighLevel guest apps, and custom business systems. Open to freelance and remote work.",
+    "Full-stack and CMS developer in the Philippines building WordPress websites, GoHighLevel guest apps, and business systems. Open to freelance and remote work.",
   jobTitle: "Full-Stack and CMS Developer",
   email: "hanzongpillerva@gmail.com",
   linkedin: "https://linkedin.com/in/hanz-pillerva",
