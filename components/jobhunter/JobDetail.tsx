@@ -88,7 +88,7 @@ export default function JobDetail({ job }: { job: Job }) {
           <p style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{job.instructions}</p>
         ) : (
           <p className="muted small" style={{ margin: 0 }}>
-            Not extracted yet. Run Analyze with Claude, or check the original posting.
+            Not extracted yet. Run Analyze with AI, or check the original posting.
           </p>
         )}
       </div>
@@ -108,7 +108,7 @@ export default function JobDetail({ job }: { job: Job }) {
           <h2>Application message draft</h2>
           <CopyButton text={job.draft ?? ''} label="Copy draft" />
         </div>
-        <pre className="pre">{job.draft || 'No draft yet. Run Analyze with Claude to create one from your profile.'}</pre>
+        <pre className="pre">{job.draft || 'No draft yet. Run Analyze with AI to create one from your profile.'}</pre>
       </div>
 
       <div className="card">

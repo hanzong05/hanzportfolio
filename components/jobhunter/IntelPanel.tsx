@@ -10,7 +10,7 @@ export default function IntelPanel({ job }: { job: Job }) {
       {!a ? (
         <div className="card" style={{ marginTop: 14 }}>
           <p className="muted">
-            Not analyzed yet. Choose <strong>Analyze with Claude</strong> in the workspace to compare this posting with
+            Not analyzed yet. Choose <strong>Analyze with AI</strong> in the workspace to compare this posting with
             your profile.
           </p>
           <p className="small muted">Analysis uses only the job description and your saved profile.</p>

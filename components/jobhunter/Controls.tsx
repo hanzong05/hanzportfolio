@@ -119,7 +119,7 @@ export function JobActions({ job }: { job: Job }) {
           disabled={busy !== null}
           onClick={() => run('analyze', () => api(`/api/jobs/${job.id}/analyze`, 'POST'))}
         >
-          {busy === 'analyze' ? 'Analyzing…' : job.analysis ? 'Re-analyze with Claude' : 'Analyze with Claude'}
+          {busy === 'analyze' ? 'Analyzing…' : job.analysis ? 'Re-analyze with AI' : 'Analyze with AI'}
         </button>
         <button
           className="btn"
