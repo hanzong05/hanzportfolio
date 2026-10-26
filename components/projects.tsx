@@ -25,6 +25,8 @@ interface Project {
   client?: string;
   /** Optional extra screenshots for the details popup gallery */
   screenshots?: string[];
+  /** Optional note shown under the preview, e.g. to mark a concept illustration */
+  imageCaption?: string;
 }
 
 const categoryMeta: Record<Category, { label: string; grad: string; Icon: LucideIcon }> = {
@@ -240,6 +242,28 @@ const projects: Project[] = [
     showLive: true,
     liveUrl: 'https://pineridgecampground.com/',
   },
+  {
+    id: 38,
+    title: 'CampMap Wayfinder',
+    image: '/projects/campmap-wayfinder.jpg',
+    imageCaption: 'Concept illustration of the wayfinder on desktop and mobile, not a screenshot of the live app.',
+    period: '',
+    category: 'web',
+    description: [
+      'A web-based mapping and navigation platform for campgrounds, RV parks, resorts, shopping centers, and other large properties. Administrators upload custom map images, align them with real-world coordinates, add points of interest, configure roads and walking routes, define geofences, and publish interactive maps that visitors open from a website.',
+      'Custom Map Calibration: align uploaded map images with real-world geographic coordinates.',
+      'GPS Location Tracking: show the visitor’s position on the custom map.',
+      'Route Planning: calculate routes using configured road networks.',
+      'Points of Interest: searchable campsites, amenities, buildings, and destinations.',
+      'Geofence Management: define geographic boundaries for supported map areas.',
+      'Road and Obstacle Editing: configure paths and areas that navigation should avoid.',
+      'Admin Dashboard: manage maps, visibility, locations, and calibration settings.',
+      'Embeddable Maps: publish public maps for integration into external websites.',
+    ],
+    technologies: ['Web Application', 'GPS Navigation', 'Interactive Mapping'],
+    showGithub: false,
+    showLive: false,
+  },
 ];
 
 const badgeTone: Record<Category, string> = {
@@ -250,7 +274,7 @@ const badgeTone: Record<Category, string> = {
   tools: 'bg-amber-50 text-amber-700',
 };
 
-const FEATURED_ID = 13;
+const FEATURED_IDS = [13, 38];
 
 export default function Projects() {
   const [active, setActive] = useState<'all' | Category>('all');
@@ -272,8 +296,9 @@ export default function Projects() {
   const countFor = (key: 'all' | Category) =>
     key === 'all' ? projects.length : projects.filter((p) => inCategory(p, key)).length;
 
-  const featured = projects.find((p) => p.id === FEATURED_ID);
-  const grid = visible.filter((p) => p.id !== FEATURED_ID);
+  const hub = projects.find((p) => p.id === 13);
+  const wayfinder = projects.find((p) => p.id === 38);
+  const grid = visible.filter((p) => !FEATURED_IDS.includes(p.id));
 
   return (
     <section id="projects" className="scroll-mt-24 border-t border-line px-4 py-20 sm:px-6 md:py-28">
@@ -291,7 +316,7 @@ export default function Projects() {
           </p>
         </div>
 
-        {featured && (
+        {hub && (
           <article className="card-light mt-12 grid items-center gap-8 overflow-hidden rounded-3xl p-6 sm:p-10 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
               <span className="inline-flex rounded-full bg-lime px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy">
@@ -311,16 +336,63 @@ export default function Projects() {
                 ))}
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
-                <button type="button" onClick={() => openModal(featured)} className="btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
+                <button type="button" onClick={() => openModal(hub)} className="btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
                   View Project <ArrowRight className="h-4 w-4" />
                 </button>
-                <button type="button" onClick={() => openModal(featured)} className="btn-outline inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
+                <button type="button" onClick={() => openModal(hub)} className="btn-outline inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
                   Browse the Hubs <ArrowUpRight className="h-4 w-4" />
                 </button>
               </div>
             </div>
             <div className="overflow-hidden rounded-2xl border border-line bg-slate-100 shadow-2xl shadow-brand/10">
-              <img src={featured.image} alt="BlueSpot Hub guest app preview" className="block h-auto w-full" />
+              <img src={hub.image} alt="BlueSpot Hub guest app preview" className="block h-auto w-full" />
+            </div>
+          </article>
+        )}
+
+        {wayfinder && (
+          <article className="card-light mt-8 grid items-center gap-8 overflow-hidden rounded-3xl p-6 sm:p-10 lg:grid-cols-[1.1fr_0.9fr]">
+            {/* Preview: no real screenshot yet, so this is an honest placeholder, not a mock of the app */}
+            <div className="order-2 lg:order-1">
+              {wayfinder.image ? (
+                <figure>
+                  <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-2xl shadow-brand/10">
+                    <img src={wayfinder.image} alt="Concept illustration of CampMap Wayfinder on a laptop and a phone, showing a custom campground map with points of interest and a Get Directions panel" className="block h-auto w-full" />
+                  </div>
+                  <figcaption className="mt-3 text-xs text-slate-500">
+                    <span className="mr-2 rounded-full bg-violet-50 px-2 py-0.5 font-semibold text-violet-700">Concept</span>
+                    {wayfinder.imageCaption}
+                  </figcaption>
+                </figure>
+              ) : null}
+            </div>
+
+            <div className="order-1 lg:order-2">
+              <span className="inline-flex rounded-full bg-lime px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy">
+                Featured project
+              </span>
+              <h3 className="mt-5 text-[clamp(2rem,3.4vw,3rem)] font-extrabold leading-[1.05] tracking-tight text-navy">
+                CampMap Wayfinder
+              </h3>
+              <p className="mt-1 text-lg font-semibold text-navy">Custom GPS navigation for campgrounds and complex properties.</p>
+              <p className="mt-4 max-w-lg leading-relaxed text-slate-600">
+                Administrators upload a custom map, align it with real-world coordinates, add points of interest, and
+                configure roads and geofences. Visitors then navigate the property from a website.
+              </p>
+              <ul className="mt-5 flex flex-wrap gap-2">
+                {wayfinder.technologies.map((t) => (
+                  <li key={t} className="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-semibold text-blue-700">{t}</li>
+                ))}
+              </ul>
+              <p className="mt-5 text-xs leading-relaxed text-slate-500">
+                <span className="font-semibold text-navy">Status:</span> in active development. Map accuracy and
+                real-world GPS reliability are still being refined.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <button type="button" onClick={() => openModal(wayfinder)} className="btn-blue inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold">
+                  Explore Features <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
             </div>
           </article>
         )}

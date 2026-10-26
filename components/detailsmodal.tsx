@@ -13,6 +13,8 @@ interface Project {
   image?: string;
   /** Optional extra screenshots for the gallery */
   screenshots?: string[];
+  /** Optional note under the preview (e.g. marks a concept illustration) */
+  imageCaption?: string;
   showGithub?: boolean;
   githubUrl?: string;
   showLive?: boolean;
@@ -121,6 +123,8 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                 </>
               )}
             </div>
+
+            {project.imageCaption && <p className="-mt-2 text-xs text-slate-400">{project.imageCaption}</p>}
 
             {shots.length > 1 && (
               <div className="flex gap-2 overflow-x-auto pb-1">
