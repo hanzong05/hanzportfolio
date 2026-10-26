@@ -3,8 +3,15 @@
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --color-ink: #070712;
-  --color-panel: #0d0d1f;
+  --color-ink: #050711;
+  --color-panel: #0a0d19;
+  --color-surface: #101426;
+  --color-text: #f8fafc;
+  --color-text-2: #a1aabc;
+  --color-text-3: #717d96;
+  --color-blue: #3b82f6;
+  --color-violet: #8b5cf6;
+  --color-cyan: #22d3ee;
 }
 
 html {
@@ -13,7 +20,7 @@ html {
 
 body {
   background: var(--color-ink);
-  color: #cbd5e1;
+  color: #a1aabc;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -41,8 +48,8 @@ body {
 
 /* Glass card surface */
 .glass {
-  background: linear-gradient(180deg, rgba(20, 20, 42, 0.75), rgba(12, 12, 28, 0.8));
-  border: 1px solid rgba(148, 163, 184, 0.12);
+  background: linear-gradient(180deg, rgba(16, 20, 38, 0.7), rgba(10, 13, 25, 0.8));
+  border: 1px solid rgba(148, 163, 184, 0.14);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
@@ -51,8 +58,8 @@ body {
   transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
 }
 .glass-hover:hover {
-  border-color: rgba(139, 92, 246, 0.45);
-  transform: translateY(-4px);
+  border-color: rgba(139, 92, 246, 0.4);
+  transform: translateY(-2px);
   box-shadow: 0 20px 50px -20px rgba(139, 92, 246, 0.5);
 }
 

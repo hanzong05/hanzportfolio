@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
 import Services from "@/components/services";
+import FeaturedProject from "@/components/featured-project";
 import About from "@/components/about";
 import WorkExperience from "@/components/experience";
 import Projects from "@/components/projects";

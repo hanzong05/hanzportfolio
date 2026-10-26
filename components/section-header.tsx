@@ -13,7 +13,7 @@ export default function SectionHeader({ eyebrow, title, accent, center = true }:
       <span className="inline-block rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
         {eyebrow}
       </span>
-      <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <h2 className="mt-4 text-[clamp(2.25rem,4vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-white">
         {title}
         {accent && (
           <>

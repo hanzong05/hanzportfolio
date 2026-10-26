@@ -31,7 +31,7 @@ export default function HeroSection() {
             Available for freelance &amp; remote work
           </span>
 
-          <h1 className="mt-6 text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
+          <h1 className="mt-6 text-[clamp(2.75rem,6vw,5.5rem)] font-extrabold leading-[1.02] tracking-tight text-white">
             I build digital experiences and <span className="text-grad">systems that work.</span>
           </h1>
 
@@ -90,6 +90,16 @@ export default function HeroSection() {
               alt="Hanz Pillerva, Full-Stack Developer"
               className="h-auto w-full object-cover transition-transform duration-700 hover:scale-105"
             />
+          </div>
+
+          {/* Verified stat cards (from resume) */}
+          <div className="glass animate-float absolute -right-2 top-4 hidden rounded-2xl px-5 py-4 shadow-2xl sm:block md:-right-6">
+            <p className="text-3xl font-bold text-grad">19</p>
+            <p className="mt-1 text-xs text-slate-400">Campground &amp; RV resort<br />hubs built</p>
+          </div>
+          <div className="glass absolute -left-2 bottom-24 hidden rounded-2xl px-5 py-4 shadow-2xl sm:block md:-left-6">
+            <p className="text-3xl font-bold text-grad">4</p>
+            <p className="mt-1 text-xs text-slate-400">Roles across<br />web, systems &amp; support</p>
           </div>
 
           {/* Tech icon bar */}
