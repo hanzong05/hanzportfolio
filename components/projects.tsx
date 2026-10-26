@@ -169,7 +169,7 @@ const projects: Project[] = [
     description: [
       'Mobile-first campground and RV travel guide with a filterable directory of Premier Properties, interactive maps, and personalized recently viewed listings.',
     ],
-    technologies: ['WordPress', 'ACF', 'Custom Post Types'],
+    technologies: ['WordPress', 'ACF', 'Custom Post Types', 'Custom Plugin'],
     showGithub: false,
     showLive: true,
     liveUrl: 'https://bluespotguide.com/',
@@ -196,7 +196,7 @@ const projects: Project[] = [
     description: [
       'Full resort website with dynamic amenities, gallery, and events, built with WordPress, ACF, and custom post types.',
     ],
-    technologies: ['WordPress', 'ACF', 'Custom Post Types'],
+    technologies: ['WordPress', 'ACF', 'Custom Post Types', 'Custom Plugin'],
     showGithub: false,
     showLive: true,
     liveUrl: 'https://forsythstationrv.com/',
@@ -212,7 +212,7 @@ const projects: Project[] = [
       'Website for a membership group connecting Cartersville and Bartow County businesses through networking, events, and resources.',
       'Member directory, events calendar, member portal, and online membership sign-up.',
     ],
-    technologies: ['WordPress', 'ACF', 'Custom Post Types'],
+    technologies: ['WordPress', 'ACF', 'Custom Post Types', 'Custom Plugin'],
     showGithub: false,
     showLive: true,
     liveUrl: 'https://bartowbusiness.org/',
@@ -239,7 +239,7 @@ const projects: Project[] = [
     description: [
       'Campground website for Pine Ridge Campground in Roebuck, South Carolina, with amenities, rates, a campground map, events calendar, FAQs and guest information.',
     ],
-    technologies: ['WordPress', 'ACF', 'Custom Post Types'],
+    technologies: ['WordPress', 'ACF', 'Custom Post Types', 'Custom Plugin'],
     showGithub: false,
     showLive: true,
     liveUrl: 'https://pineridgecampground.com/',
