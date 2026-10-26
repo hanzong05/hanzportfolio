@@ -73,7 +73,7 @@ export function ChecklistEditor({ jobId, items, checked }: { jobId: number; item
             setSaving(true);
             setError('');
             try {
-              await api(`/api/jobs/${jobId}`, 'PATCH', { checklist: values });
+              await api(`/api/jobhunter/jobs/${jobId}`, 'PATCH', { checklist: values });
               setSaved(true);
               router.refresh();
             } catch (e) {
@@ -117,7 +117,7 @@ export function JobActions({ job }: { job: Job }) {
         <button
           className="btn primary"
           disabled={busy !== null}
-          onClick={() => run('analyze', () => api(`/api/jobs/${job.id}/analyze`, 'POST'))}
+          onClick={() => { if (confirm('Run AI analysis on this job? It uses your AI key quota.')) run('analyze', () => api(`/api/jobhunter/jobs/${job.id}/analyze`, 'POST')); }}
         >
           {busy === 'analyze' ? 'Analyzing…' : job.analysis ? 'Re-analyze with AI' : 'Analyze with AI'}
         </button>
@@ -131,7 +131,7 @@ export function JobActions({ job }: { job: Job }) {
         <button
           className="btn amber"
           disabled={busy !== null || job.priority === 'maybe'}
-          onClick={() => run('later', () => api(`/api/jobs/${job.id}`, 'PATCH', { priority: 'maybe' }))}
+          onClick={() => run('later', () => api(`/api/jobhunter/jobs/${job.id}`, 'PATCH', { priority: 'maybe' }))}
         >
           Later
         </button>
@@ -140,7 +140,7 @@ export function JobActions({ job }: { job: Job }) {
           disabled={busy !== null || job.stage === 'archived'}
           onClick={() => {
             if (!confirm('Skip this job? It will be archived.')) return;
-            run('skip', () => api(`/api/jobs/${job.id}`, 'PATCH', { stage: 'archived' }));
+            run('skip', () => api(`/api/jobhunter/jobs/${job.id}`, 'PATCH', { stage: 'archived' }));
           }}
         >
           Skip
@@ -150,7 +150,7 @@ export function JobActions({ job }: { job: Job }) {
           disabled={busy !== null || job.stage === 'rejected'}
           onClick={() => {
             if (!confirm('Reject this job and remove it from active consideration?')) return;
-            run('reject', () => api(`/api/jobs/${job.id}`, 'PATCH', { stage: 'rejected' }));
+            run('reject', () => api(`/api/jobhunter/jobs/${job.id}`, 'PATCH', { stage: 'rejected' }));
           }}
         >
           Reject
@@ -160,7 +160,7 @@ export function JobActions({ job }: { job: Job }) {
           disabled={busy !== null || job.stage === 'applied' || !!job.applied_at}
           onClick={() => {
             if (!confirm('Confirm: have you actually submitted this application? Only mark it once you have.')) return;
-            run('applied', () => api(`/api/jobs/${job.id}`, 'PATCH', { stage: 'applied', applied_at: today() }));
+            run('applied', () => api(`/api/jobhunter/jobs/${job.id}`, 'PATCH', { stage: 'applied', applied_at: today() }));
           }}
         >
           Mark as submitted
@@ -172,7 +172,7 @@ export function JobActions({ job }: { job: Job }) {
             if (!confirm('Delete this job permanently? This cannot be undone.')) return;
             run(
               'delete',
-              () => api(`/api/jobs/${job.id}`, 'DELETE'),
+              () => api(`/api/jobhunter/jobs/${job.id}`, 'DELETE'),
               () => router.push('/jobhunter?view=all'),
             );
           }}
@@ -230,7 +230,7 @@ export function JobEditor({ job }: { job: Job }) {
           setSaving(true);
           setError('');
           try {
-            await api(`/api/jobs/${job.id}`, 'PATCH', form);
+            await api(`/api/jobhunter/jobs/${job.id}`, 'PATCH', form);
             setSaved(true);
             router.refresh();
           } catch (err) {
