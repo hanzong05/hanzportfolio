@@ -1,4 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk';
 import type { Job } from './jobs';
 import type { Profile } from './profile';
 import type { Analysis } from './types';
@@ -62,20 +61,83 @@ function extractJson(text: string): Record<string, unknown> {
 const strList = (v: unknown): string[] =>
   Array.isArray(v) ? v.map((x) => String(x)).filter(Boolean) : [];
 
-export async function analyzeJob(job: Job, profile: Profile): Promise<AnalysisResult> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error('ANTHROPIC_API_KEY is not set on the server, so analysis cannot run.');
-  }
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-  const model = process.env.ANTHROPIC_MODEL || 'claude-sonnet-5-5';
-
-  const msg = await client.messages.create({
-    model,
-    max_tokens: 3000,
-    system: SYSTEM,
-    messages: [{ role: 'user', content: buildPrompt(job, profile) }],
+// Uses the same AI keys as the portfolio chat: Gemini first, then Groq, then OpenRouter.
+async function askGemini(prompt: string, key: string): Promise<string> {
+  const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
+  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: SYSTEM }] },
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
+      generationConfig: { maxOutputTokens: 3000 },
+    }),
   });
-  const text = msg.content.map((b) => (b.type === 'text' ? b.text : '')).join('');
+  if (!res.ok) throw new Error(`Gemini ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  const data = await res.json();
+  const parts: { text?: string; thought?: boolean }[] = data?.candidates?.[0]?.content?.parts ?? [];
+  return parts.filter((p) => !p.thought).map((p) => p.text ?? '').join('').trim();
+}
+
+async function askOpenAICompatible(url: string, key: string, model: string, prompt: string): Promise<string> {
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${key}` },
+    body: JSON.stringify({
+      model,
+      max_tokens: 3000,
+      messages: [
+        { role: 'system', content: SYSTEM },
+        { role: 'user', content: prompt },
+      ],
+    }),
+  });
+  if (!res.ok) throw new Error(`${url} ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  const data = await res.json();
+  return String(data?.choices?.[0]?.message?.content ?? '').trim();
+}
+
+async function runModel(prompt: string): Promise<string> {
+  const providers: (() => Promise<string>)[] = [];
+  if (process.env.GEMINI_API_KEY) providers.push(() => askGemini(prompt, process.env.GEMINI_API_KEY!));
+  if (process.env.GROQ_API_KEY) {
+    providers.push(() =>
+      askOpenAICompatible(
+        'https://api.groq.com/openai/v1/chat/completions',
+        process.env.GROQ_API_KEY!,
+        process.env.GROQ_MODEL || 'openai/gpt-oss-120b',
+        prompt,
+      ),
+    );
+  }
+  if (process.env.OPENROUTER_API_KEY) {
+    providers.push(() =>
+      askOpenAICompatible(
+        'https://openrouter.ai/api/v1/chat/completions',
+        process.env.OPENROUTER_API_KEY!,
+        process.env.OPENROUTER_MODEL || 'openrouter/free',
+        prompt,
+      ),
+    );
+  }
+  if (providers.length === 0) {
+    throw new Error('No AI key is set on the server (GEMINI_API_KEY, GROQ_API_KEY, or OPENROUTER_API_KEY).');
+  }
+  const errors: string[] = [];
+  for (const run of providers) {
+    try {
+      const text = await run();
+      if (text) return text;
+      errors.push('empty response');
+    } catch (e) {
+      errors.push(e instanceof Error ? e.message : String(e));
+    }
+  }
+  throw new Error(`All AI providers failed: ${errors.join(' | ')}`);
+}
+
+export async function analyzeJob(job: Job, profile: Profile): Promise<AnalysisResult> {
+  const text = await runModel(buildPrompt(job, profile));
   const j = extractJson(text);
 
   const score = Math.max(0, Math.min(100, Math.round(Number(j.fit_score) || 0)));

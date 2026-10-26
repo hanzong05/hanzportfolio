@@ -5,9 +5,12 @@ export const dynamic = "force-dynamic";
 
 export default async function SettingsPage() {
   const counts = await viewCounts();
-  const hasAnthropic = Boolean(process.env.ANTHROPIC_API_KEY);
+  const providers = [
+    process.env.GEMINI_API_KEY && "Gemini",
+    process.env.GROQ_API_KEY && "Groq",
+    process.env.OPENROUTER_API_KEY && "OpenRouter",
+  ].filter(Boolean) as string[];
   const hasSupabase = Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
-  const model = process.env.ANTHROPIC_MODEL || "claude-sonnet-5-5";
   return (
     <div className="page">
       <Sidebar current="settings" counts={counts} />
@@ -15,12 +18,12 @@ export default async function SettingsPage() {
         <h1 style={{ marginBottom: 20 }}>Settings</h1>
 
         <div className="card">
-          <h2 style={{ marginBottom: 10 }}>Claude analysis</h2>
+          <h2 style={{ marginBottom: 10 }}>AI analysis</h2>
           <p>
             Status:{" "}
-            {hasAnthropic ? <span className="success">API key found</span> : <span className="error">ANTHROPIC_API_KEY is not set</span>}
+            {providers.length ? <span className="success">Ready ({providers.join(", ")})</span> : <span className="error">No AI key found (GEMINI_API_KEY, GROQ_API_KEY or OPENROUTER_API_KEY)</span>}
           </p>
-          <p className="muted small">Model: {model} (override with the ANTHROPIC_MODEL variable)</p>
+          <p className="muted small">Uses the same keys as the portfolio chat. Gemini is tried first, then Groq, then OpenRouter.</p>
         </div>
 
         <div className="card">
