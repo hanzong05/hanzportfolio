@@ -1,17 +1,17 @@
 /* Job Hunter styles. Every rule is scoped under .jh so it cannot change the rest of the portfolio. */
 .jh {
-  --bg: #0b0c0e;
-  --side: #0e1013;
-  --panel: #121417;
-  --panel-2: #171a1f;
-  --border: #262a31;
-  --text: #f5f6f8;
-  --muted: #8b93a1;
-  --green: #34d399;
-  --amber: #fbbf24;
-  --red: #f87171;
-  --blue: #60a5fa;
-  color-scheme: dark;
+  --bg: #f5f2ea;
+  --side: #fbfaf6;
+  --panel: #ffffff;
+  --panel-2: #f5f2ea;
+  --border: #e3ded0;
+  --text: #111827;
+  --muted: #6b7280;
+  --green: #15803d;
+  --amber: #b45309;
+  --red: #b91c1c;
+  --blue: #2456e8;
+  color-scheme: light;
 }
 .jh * { box-sizing: border-box; }
 .jh {
@@ -54,7 +54,7 @@
 .jh .nav-item .hint { display: block; color: var(--muted); font-size: 11px; }
 .jh .badge-count {
   min-width: 22px; text-align: center; font-size: 11px; padding: 1px 7px;
-  border-radius: 999px; background: #1f242b; color: var(--muted);
+  border-radius: 999px; background: #efebe0; color: var(--muted);
 }
 .jh .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
@@ -62,9 +62,9 @@
   background: var(--panel-2); color: var(--text); font: inherit; cursor: pointer;
   min-height: 36px;
 }
-.jh .btn:hover { border-color: #3a414b; text-decoration: none; }
+.jh .btn:hover { border-color: #c9c1ac; text-decoration: none; }
 .jh .btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.jh .btn.primary { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+.jh .btn.primary { background: #2456e8; border-color: #2456e8; color: #fff; }
 .jh .btn.green { background: rgba(52, 211, 153, 0.12); border-color: rgba(52, 211, 153, 0.4); color: var(--green); }
 .jh .btn.amber { background: rgba(251, 191, 36, 0.1); border-color: rgba(251, 191, 36, 0.4); color: var(--amber); }
 .jh .btn.red { background: rgba(248, 113, 113, 0.1); border-color: rgba(248, 113, 113, 0.4); color: var(--red); }
@@ -73,7 +73,7 @@
 .jh .actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .jh input, .jh select, .jh textarea {
   width: 100%; padding: 8px 10px; border-radius: 8px;
-  border: 1px solid var(--border); background: #0f1114; color: var(--text); font: inherit;
+  border: 1px solid var(--border); background: #fbfaf6; color: var(--text); font: inherit;
 }
 .jh textarea { min-height: 88px; resize: vertical; }
 .jh label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--muted); }
@@ -98,7 +98,7 @@
   display: block; padding: 12px 14px; border-radius: 10px;
   background: var(--panel); border: 1px solid var(--border); color: var(--text);
 }
-.jh .job-row:hover { border-color: #3a414b; text-decoration: none; }
+.jh .job-row:hover { border-color: #c9c1ac; text-decoration: none; }
 .jh .job-row.selected { border-color: var(--blue); }
 .jh .job-row .title { font-weight: 600; }
 .jh .job-row .meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
@@ -113,9 +113,9 @@
 .jh .meta-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin: 16px 0 6px; }
 .jh .meta-grid div { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
 .jh .meta-grid .k { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
-.jh .pre { white-space: pre-wrap; background: #0f1114; border: 1px solid var(--border); border-radius: 10px; padding: 14px; font: 13px/1.6 ui-monospace, Menlo, Consolas, monospace; margin: 0; }
+.jh .pre { white-space: pre-wrap; background: #fbfaf6; border: 1px solid var(--border); border-radius: 10px; padding: 14px; font: 13px/1.6 ui-monospace, Menlo, Consolas, monospace; margin: 0; }
 .jh .checklist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
-.jh .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; background: #0f1114; border: 1px solid var(--border); }
+.jh .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 10px; border-radius: 8px; background: #fbfaf6; border: 1px solid var(--border); }
 .jh .checklist input { width: auto; margin-top: 3px; }
 .jh .checklist label { flex-direction: row; color: var(--text); font-size: 14px; align-items: flex-start; gap: 10px; }
 .jh .checklist .done { color: var(--muted); text-decoration: line-through; }
@@ -132,9 +132,9 @@
 .jh .column { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 12px; min-height: 120px; }
 .jh .column h2 { display: flex; justify-content: space-between; margin-bottom: 10px; }
 .jh .card-mini { display: block; padding: 10px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); margin-bottom: 8px; }
-.jh .card-mini:hover { text-decoration: none; border-color: #3a414b; }
+.jh .card-mini:hover { text-decoration: none; border-color: #c9c1ac; }
 .jh .bar-row { display: grid; grid-template-columns: 110px minmax(0, 1fr) 40px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 12px; }
-.jh .bar-track { background: #0f1114; border-radius: 6px; height: 12px; overflow: hidden; border: 1px solid var(--border); }
+.jh .bar-track { background: #fbfaf6; border-radius: 6px; height: 12px; overflow: hidden; border: 1px solid var(--border); }
 .jh .bar-fill { height: 100%; background: var(--blue); }
 .jh .bar-fill.good { background: var(--green); }
 .jh .pill-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }

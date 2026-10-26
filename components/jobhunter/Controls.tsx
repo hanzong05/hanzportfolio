@@ -122,11 +122,12 @@ export function JobActions({ job }: { job: Job }) {
           {busy === 'analyze' ? 'Analyzing…' : job.analysis ? 'Re-analyze with AI' : 'Analyze with AI'}
         </button>
         <button
-          className="btn"
+          className="btn primary"
           disabled={!job.url}
           onClick={() => window.open(job.url ?? '', '_blank', 'noopener,noreferrer')}
+          title="Opens the original posting in a new tab to apply"
         >
-          Open job
+          Apply
         </button>
         <button
           className="btn amber"
