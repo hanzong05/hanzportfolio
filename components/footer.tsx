@@ -3,6 +3,7 @@ import { GithubIcon, LinkedinIcon, MailIcon } from './icons';
 
 const quickLinks = [
   { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
   { href: '#experience', label: 'Experience' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
@@ -11,8 +12,8 @@ const quickLinks = [
 ];
 
 const socials = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/hanz-pillerva-720a20349/', Icon: LinkedinIcon },
-  { label: 'GitHub', href: 'https://github.com/hanzong05', Icon: GithubIcon },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/hanz-pillerva', Icon: LinkedinIcon },
+  { label: 'GitHub', href: 'https://github.com/hanzpillerva', Icon: GithubIcon },
   { label: 'Email', href: 'mailto:hanzongpillerva@gmail.com', Icon: MailIcon },
 ];
 
@@ -28,7 +29,7 @@ export default function Footer() {
               Hanz <span className="text-grad">Pillerva</span>
             </a>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-slate-400">
-              Full-Stack Developer <span className="text-slate-600">|</span> Building solutions for a better tomorrow.
+              Full-stack and CMS developer building websites, business systems, and connected platforms. Based in the Philippines.
             </p>
           </div>
 

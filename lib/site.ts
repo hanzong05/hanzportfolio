@@ -7,6 +7,6 @@ export const SITE = {
   description:
     "Hanz Pillerva is a Full-Stack and System Developer in Tarlac, Philippines, building web systems, e-commerce platforms, HRIS, and AI/ML solutions with Next.js, React, Laravel, CakePHP, and Python.",
   email: "hanzongpillerva@gmail.com",
-  linkedin: "https://www.linkedin.com/in/hanz-pillerva-720a20349/",
-  github: "https://github.com/hanzong05",
+  linkedin: "https://linkedin.com/in/hanz-pillerva",
+  github: "https://github.com/hanzpillerva",
 };

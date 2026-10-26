@@ -10,8 +10,8 @@ export default function Contact() {
 
   const contactInfo = {
     email: 'hanzongpillerva@gmail.com',
-    linkedin: 'https://www.linkedin.com/in/hanz-pillerva-720a20349/',
-    github: 'https://github.com/hanzong05',
+    linkedin: 'https://linkedin.com/in/hanz-pillerva',
+    github: 'https://github.com/hanzpillerva',
     location: 'Tarlac, Philippines',
   };
 
@@ -84,9 +84,11 @@ export default function Contact() {
           <span className="inline-block rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-xs font-medium text-violet-300">
             Contact
           </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Get In Touch</h2>
+          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">Have a project in mind? Let&apos;s build it.</h2>
           <p className="mt-4 max-w-md text-slate-400">
-            Feel free to reach out for work opportunities, collaborations, or just to say hello.
+            I&apos;m open to freelance projects, remote opportunities, and collaborations. Whether you need a WordPress
+            website, a connected guest platform, a custom business application, or technical support, I&apos;d love to
+            hear what you&apos;re working on.
           </p>
 
           <div className="mt-10 space-y-4">

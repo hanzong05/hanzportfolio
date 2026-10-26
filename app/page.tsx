@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import HeroSection from "@/components/hero-section";
-import Stats from "@/components/stats";
+import Services from "@/components/services";
 import About from "@/components/about";
 import WorkExperience from "@/components/experience";
 import Projects from "@/components/projects";
@@ -16,8 +16,8 @@ export default function PageLayout() {
       <Header />
       <main>
         <HeroSection />
-        <Stats />
         <About />
+        <Services />
         <WorkExperience />
         <Projects />
         <TechSkills />

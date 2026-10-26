@@ -31,6 +31,6 @@ PROJECTS
 
 CONTACT
 - Email: hanzongpillerva@gmail.com
-- LinkedIn: linkedin.com/in/hanz-pillerva-720a20349
-- GitHub: github.com/hanzong05
+- LinkedIn: linkedin.com/in/hanz-pillerva
+- GitHub: github.com/hanzpillerva
 `;
