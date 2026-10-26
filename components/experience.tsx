@@ -3,7 +3,7 @@ import React from 'react';
 const experiences = [
   {
     id: 1,
-    period: 'June 2026 – Present',
+    period: '2025 – Present',
     role: 'Part-Time Freelance Web Developer',
     company: 'Freelance',
     items: [
