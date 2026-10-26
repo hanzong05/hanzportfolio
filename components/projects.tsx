@@ -27,6 +27,8 @@ interface Project {
   screenshots?: string[];
   /** Optional note shown under the preview, e.g. to mark a concept illustration */
   imageCaption?: string;
+  /** 'contain' shows tall or small images whole instead of a scrolling full-page capture */
+  galleryFit?: 'scroll' | 'contain';
 }
 
 const categoryMeta: Record<Category, { label: string; grad: string; Icon: LucideIcon }> = {
@@ -246,7 +248,14 @@ const projects: Project[] = [
     id: 38,
     title: 'CampMap Wayfinder',
     image: '/projects/campmap-wayfinder.jpg',
-    imageCaption: 'Concept illustration of the wayfinder on desktop and mobile, not a screenshot of the live app.',
+    screenshots: [
+      '/projects/campmap-wayfinder.jpg',
+      '/projects/campmap-02-find-campsite.jpg',
+      '/projects/campmap-03-select-navigate.jpg',
+      '/projects/campmap-04-turn-by-turn.jpg',
+    ],
+    galleryFit: 'contain',
+    imageCaption: 'Concept illustrations of the wayfinder on desktop and mobile (search and pick a campsite, select a destination, turn-by-turn route). Not screenshots of the live app.',
     period: '',
     category: 'web',
     description: [

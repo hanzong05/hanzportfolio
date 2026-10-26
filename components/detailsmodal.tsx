@@ -15,6 +15,8 @@ interface Project {
   screenshots?: string[];
   /** Optional note under the preview (e.g. marks a concept illustration) */
   imageCaption?: string;
+  /** 'contain' shows each image whole; default scrolls tall full-page captures */
+  galleryFit?: 'scroll' | 'contain';
   showGithub?: boolean;
   githubUrl?: string;
   showLive?: boolean;
@@ -90,7 +92,16 @@ export default function DetailsModal({ project, isOpen, onClose }: DetailsModalP
                 <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
                 <span className="ml-3 truncate text-xs text-slate-500">{project.title}</span>
               </div>
-              {current ? (
+              {current && project.galleryFit === 'contain' ? (
+                <div className="grid place-items-center bg-white p-3">
+                  <img
+                    key={current}
+                    src={current}
+                    alt={`${project.title} concept illustration ${active + 1}`}
+                    className="block h-auto max-h-[62vh] w-auto max-w-full object-contain"
+                  />
+                </div>
+              ) : current ? (
                 <div className="max-h-[60vh] overflow-y-auto overflow-x-hidden">
                   <img
                     key={current}
