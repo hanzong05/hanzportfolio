@@ -21,20 +21,11 @@ export const metadata: Metadata = {
     template: "%s | Hanz Pillerva",
   },
   description: SITE.description,
-  keywords: [
-    "Hanz Pillerva",
-    "Full-Stack Developer",
-    "System Developer",
-    "Next.js developer",
-    "React developer",
-    "Laravel developer",
-    "CakePHP developer",
-    "Tarlac developer",
-    "Philippines web developer",
-    "AI/ML developer",
-  ],
-  authors: [{ name: SITE.name, url: SITE_URL }],
-  creator: SITE.name,
+  keywords: SITE.keywords,
+  authors: [{ name: SITE.fullName, url: SITE_URL }],
+  creator: SITE.fullName,
+  publisher: SITE.fullName,
+  category: "technology",
   alternates: {
     canonical: "/",
   },
@@ -54,6 +45,7 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   icons: {
     icon: "/favicon.ico",
@@ -64,10 +56,13 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: SITE.name,
+  "@id": `${SITE_URL}/#person`,
+  name: SITE.fullName,
+  alternateName: SITE.name,
   url: SITE_URL,
+  image: `${SITE_URL}/profile.jpg`,
   email: `mailto:${SITE.email}`,
-  jobTitle: "Full-Stack Developer and System Developer",
+  jobTitle: SITE.jobTitle,
   description: SITE.description,
   address: {
     "@type": "PostalAddress",
@@ -79,7 +74,29 @@ const personJsonLd = {
     name: "Tarlac State University",
   },
   sameAs: [SITE.linkedin, SITE.github],
-  knowsAbout: ["Next.js", "React", "Laravel", "CakePHP", "PHP", "TypeScript", "Python", "Machine Learning"],
+  knowsAbout: [
+    "WordPress",
+    "GoHighLevel",
+    "Next.js",
+    "React",
+    "Laravel",
+    "PHP",
+    "TypeScript",
+    "Python",
+    "Flutter",
+    "Web development",
+  ],
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: SITE.name,
+  description: SITE.description,
+  inLanguage: "en",
+  publisher: { "@id": `${SITE_URL}/#person` },
 };
 
 export default function RootLayout({
@@ -92,7 +109,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([personJsonLd, websiteJsonLd]) }}
         />
 
         {children}
