@@ -118,7 +118,7 @@ const projects: Project[] = [
     description: [
       'Machine learning (ANN) liquefaction prediction served through a hosted API, with an interactive map, real-time LPI computation, soil bearing capacity, settlement estimation, and foundation recommendations.',
     ],
-    technologies: ['React', 'TypeScript', 'Vite', 'Leaflet'],
+    technologies: ['React', 'TypeScript', 'Leaflet', 'ML (ANN)', 'Vite', 'FastAPI'],
     showGithub: true,
     showLive: true,
     githubUrl: 'https://github.com/hanzong05/liquefact',
