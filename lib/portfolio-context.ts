@@ -8,7 +8,7 @@ ABOUT
 - Information Systems graduate (BS Information Systems, Tarlac State University, Aug 2020 - July 2024, major in Business Analytics). Capstone: a web-based Veterinary Management Information System with data analysis and visualization.
 
 EXPERIENCE
-- Central Azucarera de Tarlac (System Developer): developed in-house web and mobile applications for internal company use, and provided technical troubleshooting for office computers, hardware, and printers.
+- Central Azucarera de Tarlac (Feb 2026 - Oct 2026, System Developer): developed in-house web and mobile applications for internal company use, and provided technical troubleshooting for office computers, hardware, and printers.
 - My Creative Panda (Sept 2025 - Nov 2025): developed an official LGU website, contributed to a custom HRIS (employee records, payroll, admin workflows), built a booking and scheduling system for Khoshipping Lines, performed debugging and optimization across client systems, and provided ongoing technical support for deployed web applications.
 - Eljin Corporation (Butter World Superbakeshop) (Sept 2024 - Sept 2025): provided technical support for computers, printers, CCTV, POS, and network issues; designed a custom advertising platform; built and maintained the Butter World Superbakeshop website; helped develop the company's HRIS and payroll system; and collaborated with stakeholders on system improvements.
 

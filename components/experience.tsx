@@ -13,7 +13,7 @@ const experiences = [
   },
   {
     id: 2,
-    period: 'February 2026 – Present',
+    period: 'February 2026 – October 2026',
     role: 'System Developer',
     company: 'Central Azucarera de Tarlac',
     items: [
