@@ -147,7 +147,24 @@
 }
 @media (max-width: 860px) {
 .jh .shell, .jh .shell.has-job, .jh .page { grid-template-columns: 1fr; }
-.jh .sidebar { position: static; height: auto; border-right: 0; border-bottom: 1px solid var(--border); }
+/* On phones the menu becomes one swipeable row, so a tapped list shows right under it. */
+.jh .sidebar {
+  position: sticky; top: 0; z-index: 20; height: auto; border-right: 0; border-bottom: 1px solid var(--border);
+  flex-direction: row; align-items: center; gap: 8px; padding: 8px 12px;
+  overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; scrollbar-width: none; align-self: start;
+}
+.jh .shell, .jh .shell.has-job, .jh .page { align-content: start; }
+.jh .sidebar::-webkit-scrollbar { display: none; }
+.jh .sidebar .brand { flex: 0 0 auto; }
+.jh .sidebar .brand span { display: none; }
+.jh .sidebar > .btn { flex: 0 0 auto; }
+.jh .sidebar .nav-section { display: contents; }
+.jh .sidebar .nav-label, .jh .sidebar .nav-item .hint, .jh .sidebar > div:last-child { display: none; }
+.jh .sidebar .nav-item {
+  flex: 0 0 auto; white-space: nowrap; border: 1px solid var(--border); border-radius: 999px;
+  padding: 6px 12px; min-height: 36px;
+}
+.jh .sidebar .nav-item.active { box-shadow: none; background: #e8eefc; border-color: #2456e8; }
 .jh .center { padding: 18px 16px 48px; }
 .jh .intel { height: auto; position: static; border-left: 0; }
 .jh .toolbar { grid-template-columns: 1fr; }
